@@ -16,11 +16,11 @@ while not (strSelection == "Q" or strSelection == "q"):
   Menu
   ----
   1 - Rechèrche d'article
-  2 - Passer Une Transaction
-  3 - Conte d'article
+  2 - Passer une transaction
+  3 - Inventaire
   4 - Ajouté un article 
   5 - Suprimer un article
-  6 - Commande Recu
+  6 - Liste les articles
   Q - Quitter
   """)
     strSelection = input("Indiquer votre choix : ")
@@ -64,15 +64,29 @@ while not (strSelection == "Q" or strSelection == "q"):
         done = input("Retour? (Y) : ")
 
     elif strSelection == "3":
-        ArtId = int(input("Referance de l'article : "))
-        Id = ArtId - 1
-        print("Quantité En Stock : ", ArrInv[Id][1])
-        NewQ = int(input("Quantité Actuelle : "))
-        ArrInv[Id][1] = NewQ
-        print("Quantité changer à ", ArrInv[Id][1], " en stock.")
+        strInv = 0
+        print("""
+        1 - Conte d'inventaire
+        2 - Commende Recu
+        """)
+        strInv = input("Indiquer votre choix : ")
+        if strInv == "1":
+            ArtId = int(input("Referance de l'article : "))
+            Id = ArtId - 1
+            print("Quantité En Stock : ", ArrInv[Id][1])
+            NewQ = int(input("Quantité Actuelle : "))
+            ArrInv[Id][1] = NewQ
+            print("Quantité changer à ", ArrInv[Id][1], " en stock.")
 
-        done = input("Retour? (Y) : ")
+            done = input("Retour? (Y) : ")
+        elif strInv == "2":
+            ArtId = int(input("Referance de l'article : "))
+            Id = ArtId - 1
+            NewQ = int(input("Quantité Reçu : "))
+            ArrInv[Id][1] = NewQ
+            print("Nouvelle Quantité est ", ArrInv[Id][1], " en stock.")
 
+            done = input("Retour? (Y) : ")
     elif strSelection == "4":
         print("4")
 
