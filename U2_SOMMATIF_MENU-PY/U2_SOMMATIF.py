@@ -6,10 +6,11 @@
 import numpy as np
 
 # Légende (Ref d'article, quantité en stock, prix, commende automatique, description)
-ArrInv = np.array([[1, 10, 50.00, "Oui", "USB power bank"],
-                   [2, 6, 15.99, "Oui", "Phone Charger"],
-                   [3, 2, 9.99, "Non", "Power Block USB"],
-                   [4, 26, 4.99, "Non", "USB Light"]])
+ArrInv = np.array([[1, 10.0, 50.00, "Oui", "USB power bank"],
+                   [2, 6.0, 15.99, "Oui", "Phone Charger"],
+                   [3, 2.0, 9.99, "Non", "Power Block USB"],
+                   [4, 26.0, 4.99, "Non", "USB Light"],
+                   [5, 87.0, 38.77, "Non", "Wireless Charger"]])
 strSelection = 0
 while not (strSelection == "Q" or strSelection == "q"):
     print("""
@@ -82,8 +83,9 @@ while not (strSelection == "Q" or strSelection == "q"):
         elif strInv == "2":
             ArtId = int(input("Referance de l'article : "))
             Id = ArtId - 1
-            NewQ = int(input("Quantité Reçu : "))
-            ArrInv[Id][1] = NewQ
+            RcvQ = int(input("Quantité Reçu : "))
+            PrvQ = float(ArrInv[Id][1])
+            ArrInv[Id][1] = PrvQ + RcvQ
             print("Nouvelle Quantité est ", ArrInv[Id][1], " en stock.")
 
             done = input("Retour? (Y) : ")
