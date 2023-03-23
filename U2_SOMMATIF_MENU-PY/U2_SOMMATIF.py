@@ -7,11 +7,11 @@ import numpy as np
 import pyperclip as clp
 
 # Légende (Ref d'article, quantité en stock, prix, commende automatique, description)
-ArrInv = np.array([[1, 10.0, 50.00, "Oui", "USB power bank"],
-                   [2, 6.0, 15.99, "Oui", "Phone Charger"],
-                   [3, 2.0, 9.99, "Non", "Power Block USB"],
-                   [4, 26.0, 4.99, "Non", "USB Light"],
-                   [5, 87.0, 38.77, "Non", "Wireless Charger"]])
+ArrInv = np.array([[1, 10.0, 50.00, "Actif", "USB power bank"],
+                   [2, 6.0, 15.99, "Actif", "Phone Charger"],
+                   [3, 2.0, 9.99, "Null", "Power Block USB"],
+                   [4, 26.0, 4.99, "Null", "USB Light"],
+                   [5, 87.0, 38.77, "Actif", "Wireless Charger"]])
 strSelection = 0
 
 while not (strSelection == "Q" or strSelection == "q"):
@@ -97,6 +97,16 @@ while not (strSelection == "Q" or strSelection == "q"):
         """)
         strItm = input("Indiquer votre choix : ")
         if strItm == "1":
+            Id_len = len(ArrInv)
+            Nid = Id_len + 1
+            Ndesc1 = input("Description de l'article : ")
+            Ncst = float(input("Le prix de l'article : "))
+            Nqty1 = int(input("Quantité d'article     : "))
+            Nipfr_s = input("Commende automatique ? (Actif / Null) : ")
+            NewItm = np.array([Nid, Nqty1, Ncst, Nipfr_s, Ndesc1])
+            ArrInv = np.vstack([ArrInv, NewItm])
+
+            #ArrInv = np.vstack((ArrInv, NewItm[NewItm[:, 0] < 0]))
 
             done = input("Retour? (Y) : ")
         elif strItm == "2":
@@ -131,7 +141,11 @@ while not (strSelection == "Q" or strSelection == "q"):
             Nipfr = input("Commande Automatique : ")
             clp.copy(clpstack)
 
-            # fonction pour modifier les donnees va etre ICI
+            # Save les donne sur le Array ici
+            ArrInv[Id][1] = Nqty
+            ArrInv[Id][2] = Ncost
+            ArrInv[Id][3] = Nipfr
+            ArrInv[Id][4] = Ndesc
 
 
             print("\nVous avez soumis : {} | {}$ | {}u | {}\n".format(Ndesc, Ncost, Nqty, Nipfr))
