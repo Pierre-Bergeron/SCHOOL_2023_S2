@@ -4,6 +4,7 @@
 # GIT    : SCHOOL_2023_S2
 
 import numpy as np
+import pyperclip as clp
 
 # Légende (Ref d'article, quantité en stock, prix, commende automatique, description)
 ArrInv = np.array([[1, 10.0, 50.00, "Oui", "USB power bank"],
@@ -12,6 +13,7 @@ ArrInv = np.array([[1, 10.0, 50.00, "Oui", "USB power bank"],
                    [4, 26.0, 4.99, "Non", "USB Light"],
                    [5, 87.0, 38.77, "Non", "Wireless Charger"]])
 strSelection = 0
+
 while not (strSelection == "Q" or strSelection == "q"):
     print("""
   Menu
@@ -19,7 +21,7 @@ while not (strSelection == "Q" or strSelection == "q"):
   1 - Rechèrche d'article
   2 - Passer une transaction
   3 - Inventaire
-  4 - Ajouté un article 
+  4 - Ajouté ou Modifier un article 
   5 - Suprimer un article
   6 - Liste les articles
   Q - Quitter
@@ -65,7 +67,6 @@ while not (strSelection == "Q" or strSelection == "q"):
         done = input("Retour? (Y) : ")
 
     elif strSelection == "3":
-        strInv = 0
         print("""
         1 - Conte d'inventaire
         2 - Commende Recu
@@ -90,6 +91,49 @@ while not (strSelection == "Q" or strSelection == "q"):
 
             done = input("Retour? (Y) : ")
     elif strSelection == "4":
+        print("""
+             1 - Ajouté un article
+             2 - Modifié un article
+        """)
+        strItm = input("Indiquer votre choix : ")
+        if strItm == "1":
+
+            done = input("Retour? (Y) : ")
+        elif strItm == "2":
+            ArtId = int(input("Referance de l'article : "))
+            Id = ArtId - 1
+            Desc = ArrInv[Id][4]
+            Cost = ArrInv[Id][2]
+            Qty = ArrInv[Id][1]
+            IPFR_S = ArrInv[Id][3]
+            print("Information Acctuel sur L'Article")
+            print("Description ---------- ", Desc)
+            print("Prix ----------------- ", Cost, "$")
+            print("Quantité ------------- ", Qty)
+            print("Commande Automatique - ", IPFR_S)
+            print("**Nouvelle Information**")
+            print("Utilise **Ctrl + V** si il a aucun changement")
+
+            clpstack = clp.paste()
+            clp.copy(Desc)
+            Ndesc = input("Nouvelle Description : ")
+            clp.copy(clpstack)
+
+            clp.copy(Cost)
+            Ncost = input("Nouveaux prix        : ")
+            clp.copy(clpstack)
+
+            clp.copy(Qty)
+            Nqty = input("Nouvelle Quantité     : ")
+            clp.copy(clpstack)
+
+            clp.copy(IPFR_S)
+            Nipfr = input("Commande Automatique : ")
+            clp.copy(clpstack)
+
+            # fonction pour modifier les donnees va etre ICI
+
+            done = input("Retour? (Y) : ")
         print("4")
 
     elif strSelection == "5":
