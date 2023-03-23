@@ -92,8 +92,8 @@ while not (strSelection == "Q" or strSelection == "q"):
             done = input("Retour? (Y) : ")
     elif strSelection == "4":
         print("""
-             1 - Ajouté un article
-             2 - Modifié un article
+            1 - Ajouté un article
+            2 - Modifié un article
         """)
         strItm = input("Indiquer votre choix : ")
         if strItm == "1":
@@ -106,12 +106,12 @@ while not (strSelection == "Q" or strSelection == "q"):
             Cost = ArrInv[Id][2]
             Qty = ArrInv[Id][1]
             IPFR_S = ArrInv[Id][3]
-            print("Information Acctuel sur L'Article")
+            print("\nInformation Acctuel sur L'Article")
             print("Description ---------- ", Desc)
             print("Prix ----------------- ", Cost, "$")
             print("Quantité ------------- ", Qty)
             print("Commande Automatique - ", IPFR_S)
-            print("**Nouvelle Information**")
+            print("\n**Nouvelle Information**")
             print("Utilise **Ctrl + V** si il a aucun changement")
 
             clpstack = clp.paste()
@@ -133,6 +133,8 @@ while not (strSelection == "Q" or strSelection == "q"):
 
             # fonction pour modifier les donnees va etre ICI
 
+
+            print("\nVous avez soumis : {} | {}$ | {}u | {}\n".format(Ndesc, Ncost, Nqty, Nipfr))
             done = input("Retour? (Y) : ")
         print("4")
 
