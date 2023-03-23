@@ -164,11 +164,20 @@ while not (strSelection == "Q" or strSelection == "q"):
     elif strSelection == "6":
         print("  REF | QTY | PRIX | IPFR | DESCRIPTION")
         print(np.matrix(ArrInv))
-        print("  REF | QTY | PRIX | IPFR | DESCRIPTION")
-        Id_len = len(ArrInv)
-        Qty_tot =
+        print("  REF | QTY | PRIX | IPFR | DESCRIPTION\n")
 
+        ArrInv_Len = len(ArrInv) - 1
+        a = 0
+        Qty_tot = 0
+        Cst_tota = 0
+        while a <= ArrInv_Len:
+            Qty_tot = Qty_tot + float(ArrInv[a][1])
+            Cst_tota = Cst_tota + (float(ArrInv[a][1]) * float(ArrInv[a][2]))
 
-        print("6")
+            a = a + 1
+        Cst_tot = round(Cst_tota, 2)
+        print("L'inventaire contient {} articles individuel en total.\nEt elle veaux {}$ CAD en total.".format(Qty_tot, Cst_tot))
+
+        done = input("Retour? (Y) : ")
 print("Passé une belle journée.")
 # Les autres options suivent.
