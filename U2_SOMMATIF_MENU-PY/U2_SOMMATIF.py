@@ -106,8 +106,6 @@ while not (strSelection == "Q" or strSelection == "q"):
             NewItm = np.array([Nid, Nqty1, Ncst, Nipfr_s, Ndesc1])
             ArrInv = np.vstack([ArrInv, NewItm])
 
-            #ArrInv = np.vstack((ArrInv, NewItm[NewItm[:, 0] < 0]))
-
             done = input("Retour? (Y) : ")
         elif strItm == "2":
             ArtId = int(input("Referance de l'article : "))
@@ -150,12 +148,27 @@ while not (strSelection == "Q" or strSelection == "q"):
 
             print("\nVous avez soumis : {} | {}$ | {}u | {}\n".format(Ndesc, Ncost, Nqty, Nipfr))
             done = input("Retour? (Y) : ")
-        print("4")
 
     elif strSelection == "5":
-        print("5")
+        ArtId = int(input("Referance de l'article : "))
+        Id = ArtId - 1
+        na = "N/A"
+        nl = "Null"
+        ArrInv[Id][1] = na
+        ArrInv[Id][2] = na
+        ArrInv[Id][3] = nl
+        ArrInv[Id][4] = na
+        print("L'article {} à été supprimer, vous pouvez toujours la modifié".format(ArtId))
+        done = input("Retour? (Y) : ")
 
     elif strSelection == "6":
+        print("  REF | QTY | PRIX | IPFR | DESCRIPTION")
+        print(np.matrix(ArrInv))
+        print("  REF | QTY | PRIX | IPFR | DESCRIPTION")
+        Id_len = len(ArrInv)
+        Qty_tot =
+
+
         print("6")
 print("Passé une belle journée.")
 # Les autres options suivent.
