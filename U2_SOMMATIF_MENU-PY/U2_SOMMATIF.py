@@ -27,7 +27,7 @@ while not (strSelection == "Q" or strSelection == "q"):
   Q - Quitter
   """)
     strSelection = input("Indiquer votre choix : ")
-
+    # Cette section demontre tous information sur le produit utilisent sa referance.
     if strSelection == "1":
         ArtId = int(input("Referance de l'article : "))
         Id = ArtId - 1
@@ -41,7 +41,7 @@ while not (strSelection == "Q" or strSelection == "q"):
         print("Orde Auto : ", IPFR_S)
 
         done = input("Retour? (Y) : ")
-
+    # Cette section es un POS pour passer un produit comme transaction et l'enlever de l'inventaire pas la suite
     elif strSelection == "2":
         ArtId = int(input("Referance de l'article : "))
         Id = ArtId - 1
@@ -65,7 +65,7 @@ while not (strSelection == "Q" or strSelection == "q"):
         print("Nouvelle Quantité en Stock : ", ArrInv[Id][1])
 
         done = input("Retour? (Y) : ")
-
+    # Cette section est pour ajuster la quantité en stock
     elif strSelection == "3":
         print("""
         1 - Conte d'inventaire
@@ -81,6 +81,7 @@ while not (strSelection == "Q" or strSelection == "q"):
             print("Quantité changer à ", ArrInv[Id][1], " en stock.")
 
             done = input("Retour? (Y) : ")
+        # Cette section est pour recevoir du stock d'une commende
         elif strInv == "2":
             ArtId = int(input("Referance de l'article : "))
             Id = ArtId - 1
@@ -90,12 +91,14 @@ while not (strSelection == "Q" or strSelection == "q"):
             print("Nouvelle Quantité est ", ArrInv[Id][1], " en stock.")
 
             done = input("Retour? (Y) : ")
+    # Cette section est pour ajouté une nouvelle article ou modifier une existante
     elif strSelection == "4":
         print("""
             1 - Ajouté un article
             2 - Modifié un article
         """)
         strItm = input("Indiquer votre choix : ")
+        # Ajoute une nouvelle article au array
         if strItm == "1":
             Id_len = len(ArrInv)
             Nid = Id_len + 1
@@ -107,6 +110,7 @@ while not (strSelection == "Q" or strSelection == "q"):
             ArrInv = np.vstack([ArrInv, NewItm])
 
             done = input("Retour? (Y) : ")
+        # Modifie une article a partir de ca referance
         elif strItm == "2":
             ArtId = int(input("Referance de l'article : "))
             Id = ArtId - 1
@@ -122,6 +126,7 @@ while not (strSelection == "Q" or strSelection == "q"):
             print("\n**Nouvelle Information**")
             print("Utilise **Ctrl + V** si il a aucun changement")
 
+            # Ajoute la donne presedent du clavier a ton press-papier (Cntl + V)
             clpstack = clp.paste()
             clp.copy(Desc)
             Ndesc = input("Nouvelle Description : ")
@@ -148,7 +153,7 @@ while not (strSelection == "Q" or strSelection == "q"):
 
             print("\nVous avez soumis : {} | {}$ | {}u | {}\n".format(Ndesc, Ncost, Nqty, Nipfr))
             done = input("Retour? (Y) : ")
-
+    # Supprime les donnee d'un article mais garde le Ref # vide pour pouvoir le re-ajoute plus tard.
     elif strSelection == "5":
         ArtId = int(input("Referance de l'article : "))
         Id = ArtId - 1
@@ -160,7 +165,7 @@ while not (strSelection == "Q" or strSelection == "q"):
         ArrInv[Id][4] = na
         print("L'article {} à été supprimer, vous pouvez toujours la modifié".format(ArtId))
         done = input("Retour? (Y) : ")
-
+    # Cree un audit de l'inventaire et meme la valeur total des article combiner.
     elif strSelection == "6":
         print("  REF | QTY | PRIX | IPFR | DESCRIPTION")
         print(np.matrix(ArrInv))
@@ -173,7 +178,6 @@ while not (strSelection == "Q" or strSelection == "q"):
         while a <= ArrInv_Len:
             Qty_tot = Qty_tot + float(ArrInv[a][1])
             Cst_tota = Cst_tota + (float(ArrInv[a][1]) * float(ArrInv[a][2]))
-
             a = a + 1
         Cst_tot = round(Cst_tota, 2)
         print("L'inventaire contient {} articles individuel en total.\nEt elle veaux {}$ CAD en total.".format(Qty_tot, Cst_tot))
