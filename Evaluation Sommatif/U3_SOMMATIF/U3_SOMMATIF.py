@@ -15,6 +15,21 @@ ArrInv = np.array([[1, 10.0, 50.00, "Actif", "USB power bank"],
                    [5, 87.0, 38.77, "Actif", "Wireless Charger"]])
 strSelection = 0
 # Fonction Pull, Push, Del, Edit
+def data_arr(id_ref, id_sel):
+    if id_sel == 1:
+
+        return
+    elif id_sel == 2:
+
+        return
+    elif id_sel == 3:
+
+        return
+    else:
+        return 0
+
+
+
 
 
 while not (strSelection == "Q" or strSelection == "q"):
