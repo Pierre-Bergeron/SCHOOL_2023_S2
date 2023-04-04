@@ -15,10 +15,16 @@ ArrInv = np.array([[1, 10.0, 50.00, "Actif", "USB power bank"],
                    [5, 87.0, 38.77, "Actif", "Wireless Charger"]])
 strSelection = 0
 # Fonction Pull, Push, Del, Edit
-def data_arr(id_ref, id_sel):
+# Sub_sel (1 = Description, 2 = Cost, 3 = QTY, 4 = IPFR)
+def data_arr(id_ref, id_sel, id_sub_sel):
     if id_sel == 1:
+        if id_sub_sel == 1:
+            ref_id = id_ref - 1
+            return ArrInv[ref_id][4]
+        elif id_sub_sel == 2:
+            ref_id = id_ref - 1
+            return ArrInv[ref_id][2]
 
-        return
     elif id_sel == 2:
 
         return
