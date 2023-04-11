@@ -14,30 +14,47 @@ ArrInv = np.array([[1, 10.0, 50.00, "Actif", "USB power bank"],
                    [4, 26.0, 4.99, "Null", "USB Light"],
                    [5, 87.0, 38.77, "Actif", "Wireless Charger"]])
 strSelection = 0
+
+
 # Fonction Pull, Push, Del, Edit
 # Sub_sel (1 = Description, 2 = Cost, 3 = QTY, 4 = IPFR)
 # id_sel (1 = Desc, 2 = IPFR status, 3 = inventory, 4 = prix)
-def data_arr(id_ref, id_sel):
-    sCR_ID = id_ref - 1
+def pull(id_ref, id_sel):
+    scr_id = id_ref - 1
     if id_sel == 1:
-        o1 = ArrInv[sCR_ID][4]
+        o1 = ArrInv[scr_id][4]
         return o1
     elif id_sel == 2:
-        o2 = ArrInv[sCR_ID][3]
+        o2 = ArrInv[scr_id][3]
         return o2
     elif id_sel == 3:
-        o3 = ArrInv[sCR_ID][1]
+        o3 = ArrInv[scr_id][1]
         return o3
     elif id_sel == 4:
-        o4 = ArrInv[sCR_ID][2]
+        o4 = ArrInv[scr_id][2]
         return o4
-
     else:
         null = "null"
         return null
 
 
-
+def push(id_ref, id_sel, data_push):
+    scr_id = id_ref - 1
+    if id_sel == 1:
+        ArrInv[scr_id][4] = data_push
+        return
+    elif id_sel == 2:
+        ArrInv[scr_id][3] = data_push
+        return
+    elif id_sel == 3:
+        ArrInv[scr_id][1] = data_push
+        return
+    elif id_sel == 4:
+        ArrInv[scr_id][2] = data_push
+        return
+    else:
+        null = "null"
+        return null
 
 
 while not (strSelection == "Q" or strSelection == "q"):
@@ -57,38 +74,35 @@ while not (strSelection == "Q" or strSelection == "q"):
     if strSelection == "1":
         ArtId = int(input("Referance de l'article : "))
         Id = ArtId
-        Desc = data_arr(Id, 1)
-        Cost = data_arr(Id, 4)
-        Qty = data_arr(Id, 3)
-        IPFR_S = data_arr(Id, 2)
-        print("Article : ", Desc)
-        print("Prix : ", Cost, "$")
-        print("En Stock : ", Qty, " unité")
-        print("Orde Auto : ", IPFR_S)
+
+        Desc, IPFR_S, Qty, Cost = pull(Id, 1), pull(Id, 2), pull(Id, 3), pull(Id, 4)
+        print("Article : ", Desc, "\n", "Prix : ", Cost, "$", "\n", "En Stock : ", Qty, " unité", "\n", "Orde Auto : ",
+              IPFR_S)
 
         done = input("Retour? (Y) : ")
     # Cette section es un POS pour passer un produit comme transaction et l'enlever de l'inventaire pas la suite
     elif strSelection == "2":
         ArtId = int(input("Referance de l'article : "))
         Id = ArtId - 1
-        print("Quantité Disponible : ", ArrInv[Id][1])
+        print("Quantité Disponible : ", pull(Id, 3))
         AchQ = int(input("Quantité acheté : "))
-        prix = float(ArrInv[Id][2])
+        prix = float(pull(Id, 4))
 
-        itc = ArrInv[Id][2]
         sub = prix * AchQ
         hst = round(sub * 0.13, 2)
         tot = round(sub + hst, 2)
 
-        print("Sous-total -- ", sub, "$", " -- (", AchQ, " * ", itc, "$)")
+        print("Sous-total -- ", sub, "$", " -- (", AchQ, " * ", pull(Id, 2), "$)")
         print("HST (ON) ---- ", hst, "$")
         print("Total ------- ", tot, "$")
         conf = input("Voulez vous passé la transaction (O/N)? ")
         if conf == "O":
-            ArrInv[Id][1] = float(ArrInv[Id][1]) - AchQ
+            setQTY = float(pull(Id, 3)) - AchQ
+            push(Id, 3, setQTY)
         else:
             print("**Transaction Annuler**")
-        print("Nouvelle Quantité en Stock : ", ArrInv[Id][1])
+
+        print("Nouvelle Quantité en Stock : ", pull(Id, 3))
 
         done = input("Retour? (Y) : ")
     # Cette section est pour ajuster la quantité en stock
@@ -176,7 +190,6 @@ while not (strSelection == "Q" or strSelection == "q"):
             ArrInv[Id][3] = Nipfr
             ArrInv[Id][4] = Ndesc
 
-
             print("\nVous avez soumis : {} | {}$ | {}u | {}\n".format(Ndesc, Ncost, Nqty, Nipfr))
             done = input("Retour? (Y) : ")
     # Supprime les donnee d'un article mais garde le Ref # vide pour pouvoir le re-ajoute plus tard.
@@ -206,7 +219,8 @@ while not (strSelection == "Q" or strSelection == "q"):
             Cst_tota = Cst_tota + (float(ArrInv[a][1]) * float(ArrInv[a][2]))
             a = a + 1
         Cst_tot = round(Cst_tota, 2)
-        print("L'inventaire contient {} articles individuel en total.\nEt elle veaux {}$ CAD en total.".format(Qty_tot, Cst_tot))
+        print("L'inventaire contient {} articles individuel en total.\nEt elle veaux {}$ CAD en total.".format(Qty_tot,
+                                                                                                               Cst_tot))
 
         done = input("Retour? (Y) : ")
 print("Passé une belle journée.")
