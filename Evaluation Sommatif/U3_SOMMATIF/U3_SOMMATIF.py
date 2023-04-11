@@ -76,7 +76,8 @@ while not (strSelection == "Q" or strSelection == "q"):
         Id = ArtId
 
         Desc, IPFR_S, Qty, Cost = pull(Id, 1), pull(Id, 2), pull(Id, 3), pull(Id, 4)
-        print("\n", "Article : ", Desc, "\n", "Prix : ", Cost, "$", "\n", "En Stock : ", Qty, " unité", "\n", "Orde Auto : ",
+        print("\n", "Article : ", Desc, "\n", "Prix : ", Cost, "$", "\n", "En Stock : ", Qty, " unité", "\n",
+              "Orde Auto : ",
               IPFR_S)
 
         done = input("Retour? (Y) : ")
