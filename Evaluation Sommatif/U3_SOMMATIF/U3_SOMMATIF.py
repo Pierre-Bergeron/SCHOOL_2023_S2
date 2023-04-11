@@ -76,7 +76,7 @@ while not (strSelection == "Q" or strSelection == "q"):
         Id = ArtId
 
         Desc, IPFR_S, Qty, Cost = pull(Id, 1), pull(Id, 2), pull(Id, 3), pull(Id, 4)
-        print("Article : ", Desc, "\n", "Prix : ", Cost, "$", "\n", "En Stock : ", Qty, " unité", "\n", "Orde Auto : ",
+        print("\n", "Article : ", Desc, "\n", "Prix : ", Cost, "$", "\n", "En Stock : ", Qty, " unité", "\n", "Orde Auto : ",
               IPFR_S)
 
         done = input("Retour? (Y) : ")
@@ -154,11 +154,9 @@ while not (strSelection == "Q" or strSelection == "q"):
         # Modifie une article a partir de ca referance
         elif strItm == "2":
             ArtId = int(input("Referance de l'article : "))
-            Id = ArtId - 1
-            Desc = ArrInv[Id][4]
-            Cost = ArrInv[Id][2]
-            Qty = ArrInv[Id][1]
-            IPFR_S = ArrInv[Id][3]
+            Id = ArtId
+            Desc, IPFR_S, Qty, Cost = pull(Id, 1), pull(Id, 2), pull(Id, 3), pull(Id, 4)
+
             print("\nInformation Acctuel sur L'Article")
             print("Description ---------- ", Desc)
             print("Prix ----------------- ", Cost, "$")
@@ -186,10 +184,10 @@ while not (strSelection == "Q" or strSelection == "q"):
             clp.copy(clpstack)
 
             # Save les donne sur le Array ici
-            ArrInv[Id][1] = Nqty
-            ArrInv[Id][2] = Ncost
-            ArrInv[Id][3] = Nipfr
-            ArrInv[Id][4] = Ndesc
+            push(Id, 1, Ndesc)
+            push(Id, 4, Ncost)
+            push(Id, 3, Nqty)
+            push(Id, 2, Nipfr)
 
             print("\nVous avez soumis : {} | {}$ | {}u | {}\n".format(Ndesc, Ncost, Nqty, Nipfr))
             done = input("Retour? (Y) : ")
