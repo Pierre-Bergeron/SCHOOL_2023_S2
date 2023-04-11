@@ -16,23 +16,25 @@ ArrInv = np.array([[1, 10.0, 50.00, "Actif", "USB power bank"],
 strSelection = 0
 # Fonction Pull, Push, Del, Edit
 # Sub_sel (1 = Description, 2 = Cost, 3 = QTY, 4 = IPFR)
-def data_arr(id_ref, id_sel, id_sub_sel):
+# id_sel (1 = Desc, 2 = IPFR status, 3 = inventory, 4 = prix)
+def data_arr(id_ref, id_sel):
+    sCR_ID = id_ref - 1
     if id_sel == 1:
-        if id_sub_sel == 1:
-            ref_id = id_ref - 1
-            return ArrInv[ref_id][4]
-        elif id_sub_sel == 2:
-            ref_id = id_ref - 1
-            return ArrInv[ref_id][2]
-
+        o1 = ArrInv[sCR_ID][4]
+        return o1
     elif id_sel == 2:
-
-        return
+        o2 = ArrInv[sCR_ID][3]
+        return o2
     elif id_sel == 3:
+        o3 = ArrInv[sCR_ID][1]
+        return o3
+    elif id_sel == 4:
+        o4 = ArrInv[sCR_ID][2]
+        return o4
 
-        return
     else:
-        return 0
+        null = "null"
+        return null
 
 
 
@@ -54,11 +56,11 @@ while not (strSelection == "Q" or strSelection == "q"):
     # Cette section demontre tous information sur le produit utilisent sa referance.
     if strSelection == "1":
         ArtId = int(input("Referance de l'article : "))
-        Id = ArtId - 1
-        Desc = ArrInv[Id][4]
-        Cost = ArrInv[Id][2]
-        Qty = ArrInv[Id][1]
-        IPFR_S = ArrInv[Id][3]
+        Id = ArtId
+        Desc = data_arr(Id, 1)
+        Cost = data_arr(Id, 4)
+        Qty = data_arr(Id, 3)
+        IPFR_S = data_arr(Id, 2)
         print("Article : ", Desc)
         print("Prix : ", Cost, "$")
         print("En Stock : ", Qty, " unité")
