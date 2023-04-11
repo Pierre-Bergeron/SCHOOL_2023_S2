@@ -194,13 +194,14 @@ while not (strSelection == "Q" or strSelection == "q"):
     # Supprime les donnee d'un article mais garde le Ref # vide pour pouvoir le re-ajoute plus tard.
     elif strSelection == "5":
         ArtId = int(input("Referance de l'article : "))
-        Id = ArtId - 1
+        Id = ArtId
         na = "N/A"
         nl = "Null"
-        ArrInv[Id][1] = na
-        ArrInv[Id][2] = na
-        ArrInv[Id][3] = nl
-        ArrInv[Id][4] = na
+        push(Id, 1, na)
+        push(Id, 2, nl)
+        push(Id, 3, na)
+        push(Id, 4, na)
+
         print("L'article {} à été supprimer, vous pouvez toujours la modifié".format(ArtId))
         done = input("Retour? (Y) : ")
     # Cree un audit de l'inventaire et meme la valeur total des article combiner.
@@ -214,8 +215,8 @@ while not (strSelection == "Q" or strSelection == "q"):
         Qty_tot = 0
         Cst_tota = 0
         while a <= ArrInv_Len:
-            Qty_tot = Qty_tot + float(ArrInv[a][1])
-            Cst_tota = Cst_tota + (float(ArrInv[a][1]) * float(ArrInv[a][2]))
+            Qty_tot = Qty_tot + float(pull(a, 3))
+            Cst_tota = Cst_tota + (float(pull(a, 3)) * float(pull(a, 4)))
             a = a + 1
         Cst_tot = round(Cst_tota, 2)
         print("L'inventaire contient {} articles individuel en total.\nEt elle veaux {}$ CAD en total.".format(Qty_tot,
