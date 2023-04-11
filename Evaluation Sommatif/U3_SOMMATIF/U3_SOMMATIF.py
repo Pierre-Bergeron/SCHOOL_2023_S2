@@ -114,21 +114,22 @@ while not (strSelection == "Q" or strSelection == "q"):
         strInv = input("Indiquer votre choix : ")
         if strInv == "1":
             ArtId = int(input("Referance de l'article : "))
-            Id = ArtId - 1
-            print("Quantité En Stock : ", ArrInv[Id][1])
+            Id = ArtId
+            print("Quantité En Stock : ", pull(Id, 3))
             NewQ = int(input("Quantité Actuelle : "))
-            ArrInv[Id][1] = NewQ
-            print("Quantité changer à ", ArrInv[Id][1], " en stock.")
+            push(Id, 3, NewQ)
+            print("Quantité changer à ", pull(Id, 3), " en stock.")
 
             done = input("Retour? (Y) : ")
         # Cette section est pour recevoir du stock d'une commende
         elif strInv == "2":
             ArtId = int(input("Referance de l'article : "))
-            Id = ArtId - 1
+            Id = ArtId
             RcvQ = int(input("Quantité Reçu : "))
-            PrvQ = float(ArrInv[Id][1])
-            ArrInv[Id][1] = PrvQ + RcvQ
-            print("Nouvelle Quantité est ", ArrInv[Id][1], " en stock.")
+            PrvQ = float(pull(Id, 3))
+            AddedQ = PrvQ + RcvQ
+            push(Id, 3, AddedQ)
+            print("Nouvelle Quantité est ", pull(Id, 3), " en stock.")
 
             done = input("Retour? (Y) : ")
     # Cette section est pour ajouté une nouvelle article ou modifier une existante
