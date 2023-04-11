@@ -83,7 +83,7 @@ while not (strSelection == "Q" or strSelection == "q"):
     # Cette section es un POS pour passer un produit comme transaction et l'enlever de l'inventaire pas la suite
     elif strSelection == "2":
         ArtId = int(input("Referance de l'article : "))
-        Id = ArtId - 1
+        Id = ArtId
         print("Quantité Disponible : ", pull(Id, 3))
         AchQ = int(input("Quantité acheté : "))
         prix = float(pull(Id, 4))
