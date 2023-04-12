@@ -8,10 +8,10 @@ import numpy as np
 import pyperclip as clp
 
 # Légende (Ref d'article, quantité en stock, prix, commende automatique, description)
-ArrInv = np.array([[4, 10.0, 50.00, "Actif", "USB power bank"],
+ArrInv = np.array([[1, 10.0, 50.00, "Actif", "USB power bank"],
                    [2, 6.0, 15.99, "Actif", "Phone Charger"],
                    [3, 2.0, 9.99, "Null", "Power Block USB"],
-                   [1, 26.0, 4.99, "Null", "USB Light"],
+                   [4, 26.0, 4.99, "Null", "USB Light"],
                    [5, 87.0, 38.77, "Actif", "Wireless Charger"]])
 strSelection = ""
 
