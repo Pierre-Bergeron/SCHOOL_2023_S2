@@ -18,7 +18,7 @@ strSelection = ""
 
 # Fonction Pull, Push, Del, Edit
 # Sub_sel (1 = Description, 2 = Cost, 3 = QTY, 4 = IPFR)
-# id_sel (1 = Desc, 2 = IPFR status, 3 = inventory, 4 = prix)
+# id_sel (1 = Desc, 2 = IPFR status, 3 = inventory, 4 = prix, 5 = ref)
 def pull(id_ref, id_sel):
     scr_id = id_ref - 1
     if id_sel == 1:
