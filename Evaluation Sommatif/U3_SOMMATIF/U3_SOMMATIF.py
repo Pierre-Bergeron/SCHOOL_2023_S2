@@ -12,7 +12,9 @@ ArrInv = np.array([[1, 10.0, 50.00, "Actif", "USB power bank"],
                    [2, 6.0, 15.99, "Actif", "Phone Charger"],
                    [3, 2.0, 9.99, "Null", "Power Block USB"],
                    [4, 26.0, 4.99, "Null", "USB Light"],
-                   [5, 87.0, 38.77, "Actif", "Wireless Charger"]])
+                   [7, 87.0, 38.77, "Actif", "Wireless Charger"],
+                   [6, 21.0, 21.99, "Null", "White Brd Case (30pc)"],
+                   [5, 0.0, 19.98, "Null", "Christmas Lights"]])
 strSelection = ""
 
 
@@ -162,6 +164,7 @@ while not (strSelection == "Q" or strSelection == "q"):
             Nipfr_s = input("Commende automatique ? (Actif / Null) : ")
             NewItm = np.array([Nid, Nqty1, Ncst, Nipfr_s, Ndesc1])
             ArrInv = np.vstack([ArrInv, NewItm])
+            print("La référance de l'article << {} >> est {}".format(pull(Nid, 1), pull(Nid, 5)))
 
             done = input("Retour? (Y) : ")
         # Modifie une article a partir de ca referance
