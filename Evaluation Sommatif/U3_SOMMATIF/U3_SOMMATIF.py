@@ -13,7 +13,7 @@ ArrInv = np.array([[1, 10.0, 50.00, "Actif", "USB power bank"],
                    [3, 2.0, 9.99, "Null", "Power Block USB"],
                    [4, 26.0, 4.99, "Null", "USB Light"],
                    [5, 87.0, 38.77, "Actif", "Wireless Charger"]])
-strSelection = 0
+strSelection = ""
 
 
 # Fonction Pull, Push, Del, Edit
@@ -61,7 +61,7 @@ while not (strSelection == "Q" or strSelection == "q"):
     print("""
   Menu
   ----
-  1 - Rechèrche d'article
+  1 - Recherché un article
   2 - Passer une transaction
   3 - Inventaire
   4 - Ajouté ou Modifier un article 
