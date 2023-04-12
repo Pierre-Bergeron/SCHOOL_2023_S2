@@ -8,10 +8,10 @@ import numpy as np
 import pyperclip as clp
 
 # Légende (Ref d'article, quantité en stock, prix, commende automatique, description)
-ArrInv = np.array([[1, 10.0, 50.00, "Actif", "USB power bank"],
+ArrInv = np.array([[4, 10.0, 50.00, "Actif", "USB power bank"],
                    [2, 6.0, 15.99, "Actif", "Phone Charger"],
                    [3, 2.0, 9.99, "Null", "Power Block USB"],
-                   [4, 26.0, 4.99, "Null", "USB Light"],
+                   [1, 26.0, 4.99, "Null", "USB Light"],
                    [5, 87.0, 38.77, "Actif", "Wireless Charger"]])
 strSelection = ""
 
@@ -19,6 +19,15 @@ strSelection = ""
 # Fonction Pull, Push, Del, Edit
 # Sub_sel (1 = Description, 2 = Cost, 3 = QTY, 4 = IPFR)
 # id_sel (1 = Desc, 2 = IPFR status, 3 = inventory, 4 = prix, 5 = ref)
+def find(id_ref):
+    row = 0
+    arraylen = len(ArrInv)
+    while row < arraylen:
+        if id_ref == ArrInv[row][0]:
+            rowId = row + 1
+            return rowId
+        else:
+            row = row + 1
 def pull(id_ref, id_sel):
     scr_id = id_ref - 1
     if id_sel == 1:
@@ -75,8 +84,8 @@ while not (strSelection == "Q" or strSelection == "q"):
     strSelection = input("Indiquer votre choix : ")
     # Cette section demontre tous information sur le produit utilisent sa referance.
     if strSelection == "1":
-        ArtId = int(input("Referance de l'article : "))
-        Id = ArtId
+        ArtId = input("Referance de l'article : ")
+        Id = find(ArtId)
 
         Desc, IPFR_S, Qty, Cost = pull(Id, 1), pull(Id, 2), pull(Id, 3), pull(Id, 4)
         print("\n", "Article : ", Desc, "\n", "Prix : ", Cost, "$", "\n", "En Stock : ", Qty, " unité", "\n",
@@ -86,8 +95,8 @@ while not (strSelection == "Q" or strSelection == "q"):
         done = input("Retour? (Y) : ")
     # Cette section es un POS pour passer un produit comme transaction et l'enlever de l'inventaire pas la suite
     elif strSelection == "2":
-        ArtId = int(input("Referance de l'article : "))
-        Id = ArtId
+        ArtId = input("Referance de l'article : ")
+        Id = find(ArtId)
         print("Quantité Disponible : ", pull(Id, 3))
         AchQ = int(input("Quantité acheté : "))
         prix = float(pull(Id, 4))
@@ -117,8 +126,8 @@ while not (strSelection == "Q" or strSelection == "q"):
         """)
         strInv = input("Indiquer votre choix : ")
         if strInv == "1":
-            ArtId = int(input("Referance de l'article : "))
-            Id = ArtId
+            ArtId = input("Referance de l'article : ")
+            Id = find(ArtId)
             print("Quantité En Stock : ", pull(Id, 3))
             NewQ = int(input("Quantité Actuelle : "))
             push(Id, 3, NewQ)
@@ -127,8 +136,8 @@ while not (strSelection == "Q" or strSelection == "q"):
             done = input("Retour? (Y) : ")
         # Cette section est pour recevoir du stock d'une commende
         elif strInv == "2":
-            ArtId = int(input("Referance de l'article : "))
-            Id = ArtId
+            ArtId = input("Referance de l'article : ")
+            Id = find(ArtId)
             RcvQ = int(input("Quantité Reçu : "))
             PrvQ = float(pull(Id, 3))
             AddedQ = PrvQ + RcvQ
@@ -157,8 +166,8 @@ while not (strSelection == "Q" or strSelection == "q"):
             done = input("Retour? (Y) : ")
         # Modifie une article a partir de ca referance
         elif strItm == "2":
-            ArtId = int(input("Referance de l'article : "))
-            Id = ArtId
+            ArtId = input("Referance de l'article : ")
+            Id = find(ArtId)
             Desc, IPFR_S, Qty, Cost = pull(Id, 1), pull(Id, 2), pull(Id, 3), pull(Id, 4)
 
             print("\nInformation Acctuel sur L'Article")
@@ -197,8 +206,8 @@ while not (strSelection == "Q" or strSelection == "q"):
             done = input("Retour? (Y) : ")
     # Supprime les donnee d'un article mais garde le Ref # vide pour pouvoir le re-ajoute plus tard.
     elif strSelection == "5":
-        ArtId = int(input("Referance de l'article : "))
-        Id = ArtId
+        ArtId = input("Referance de l'article : ")
+        Id = find(ArtId)
         na = "N/A"
         nl = "Null"
         push(Id, 1, na)
@@ -211,11 +220,12 @@ while not (strSelection == "Q" or strSelection == "q"):
     # Cree un audit de l'inventaire et meme la valeur total des article combiner.
     elif strSelection == "6":
         ArrInv_Len = len(ArrInv) - 1
+        ArrInv_Len1 = len(ArrInv)
         a = 0
-        b = 0
+        b = 1
         print("  REF | QTY | PRIX | IPFR | DESCRIPTION")
         # id_sel (1 = Desc, 2 = IPFR status, 3 = inventory, 4 = prix, 5 = ref)
-        while b <= ArrInv_Len:
+        while b <= ArrInv_Len1:
             print(f"{pull(b, 5):^7} {pull(b,3):^5} {pull(b, 4):6} {pull(b, 2):^6} {pull(b, 1)}")
             b = b + 1
         print("  REF | QTY | PRIX | IPFR | DESCRIPTION\n")
