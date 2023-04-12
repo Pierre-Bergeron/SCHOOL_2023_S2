@@ -33,6 +33,9 @@ def pull(id_ref, id_sel):
     elif id_sel == 4:
         o4 = ArrInv[scr_id][2]
         return o4
+    elif id_sel == 5:
+        o5 = ArrInv[scr_id][0]
+        return o5
     else:
         null = "null"
         return null
@@ -207,12 +210,17 @@ while not (strSelection == "Q" or strSelection == "q"):
         done = input("Retour? (Y) : ")
     # Cree un audit de l'inventaire et meme la valeur total des article combiner.
     elif strSelection == "6":
-        print("  REF | QTY | PRIX | IPFR | DESCRIPTION")
-        print(np.matrix(ArrInv))
-        print("  REF | QTY | PRIX | IPFR | DESCRIPTION\n")
-
         ArrInv_Len = len(ArrInv) - 1
         a = 0
+        b = 0
+        print("  REF | QTY | PRIX | IPFR | DESCRIPTION")
+        # id_sel (1 = Desc, 2 = IPFR status, 3 = inventory, 4 = prix, 5 = ref)
+        while b <= ArrInv_Len:
+            print(f"{pull(b, 5):^7} {pull(b,3):^5} {pull(b, 4):6} {pull(b, 2):^6} {pull(b, 1)}")
+            b = b + 1
+        print("  REF | QTY | PRIX | IPFR | DESCRIPTION\n")
+
+
         Qty_tot = 0
         Cst_tota = 0
         while a <= ArrInv_Len:
