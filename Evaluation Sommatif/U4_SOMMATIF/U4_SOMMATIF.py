@@ -9,22 +9,33 @@ import math
 
 class Refrigo:
     def __init__(self):
-        self.intObjLargeur = 0
-        self.intObjHauteur = 0
-        self.intObjProfondeur = 0
+        self.intObjLargeur = 4
+        self.intObjHauteur = 2
+        self.intObjProfondeur = 6
 
-        self.intEmpLargeur = 0
-        self.intEmpHauteur = 0
-        self.intEmpProfondeur = 0
+        self.intEmpLargeur = 5
+        self.intEmpHauteur = 2
+        self.intEmpProfondeur = 5
 
     def check(self):
         if self.intObjLargeur <= self.intEmpLargeur:
             if self.intObjHauteur <= self.intEmpHauteur:
                 if self.intObjProfondeur <= self.intEmpProfondeur:
-                    print("Le {} va faire".format(self.__init__()))
+                    print("Le Frigo va faire")
+                else:
+                    print("ne fait pas")
+            else:
+                print("ne fait pas")
+        else:
+            print("ne fait pas")
+
+
+
+
+
 
 
 objFridge = Refrigo()
-objFridge
+objFridge.check()
 
 
