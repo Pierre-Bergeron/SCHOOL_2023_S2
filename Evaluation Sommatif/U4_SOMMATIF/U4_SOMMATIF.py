@@ -29,10 +29,9 @@ class Refrigo:
         else:
             print("ne fait pas")
 
-
-
-
-
+class MicroOnd:
+    def __init__(self):
+        self.intNAME_SIDE = 0
 
 
 objFridge = Refrigo()
