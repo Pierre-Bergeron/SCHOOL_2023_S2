@@ -36,7 +36,7 @@ class Refrigo:
         else:
             print("Ne fait pas")
 
-    def calcInVol(self):
+    def cal_vol(self):
         if self.fit_isTrue == 1:
             volume = self.inIntObjLongueur * self.inIntObjHauteur * self.inIntObjProfondeur
             print("Le volume du réfrigérateur est: {} cm³".format(volume))
@@ -64,6 +64,6 @@ Refrigo.inIntObjHauteur = int(input("Hauteur du réfrigérateur: "))
 Refrigo.inIntObjProfondeur = int(input("Profondeur du réfrigérateur: "))
 
 objFridge.check()
-objFridge.calcInVol()
+objFridge.cal_vol()
 
 
