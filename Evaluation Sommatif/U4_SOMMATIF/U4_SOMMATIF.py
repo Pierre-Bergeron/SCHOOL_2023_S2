@@ -17,9 +17,9 @@ class Refrigo:
         self.intEmpHauteur = 170
         self.intEmpProfondeur = 75
 
-        self.extIntObjLongueur = 0
-        self.extIntObjHauteur = 0
-        self.extIntObjProfondeur = 0
+        self.inIntObjLongueur = 0
+        self.inIntObjHauteur = 0
+        self.inIntObjProfondeur = 0
 
         self.fit_isTrue = 0
 
@@ -36,9 +36,9 @@ class Refrigo:
         else:
             print("Ne fait pas")
 
-    def calcIn(self):
+    def calcInVol(self):
         if self.fit_isTrue == 1:
-            volume = self.extIntObjLongueur * self.extIntObjHauteur * self.extIntObjProfondeur
+            volume = self.inIntObjLongueur * self.inIntObjHauteur * self.inIntObjProfondeur
             print("Le volume du réfrigérateur est: {} cm³".format(volume))
         else:
             print("Le volume na pas été calculer, tandis que le réfrigérateur ne fait pas.")
@@ -59,11 +59,11 @@ Refrigo.intObjLongueur = int(input("Longueur du réfrigérateur: "))
 Refrigo.intObjHauteur = int(input("Hauteur du réfrigérateur: "))
 Refrigo.intObjProfondeur = int(input("Profondeur du réfrigérateur: "))
 print("Dimation interieur;")
-Refrigo.extIntObjLongueur = int(input("Longueur du réfrigérateur: "))
-Refrigo.extIntObjHauteur = int(input("Hauteur du réfrigérateur: "))
-Refrigo.extIntObjProfondeur = int(input("Profondeur du réfrigérateur: "))
+Refrigo.inIntObjLongueur = int(input("Longueur du réfrigérateur: "))
+Refrigo.inIntObjHauteur = int(input("Hauteur du réfrigérateur: "))
+Refrigo.inIntObjProfondeur = int(input("Profondeur du réfrigérateur: "))
 
 objFridge.check()
-objFridge.calcIn()
+objFridge.calcInVol()
 
 
