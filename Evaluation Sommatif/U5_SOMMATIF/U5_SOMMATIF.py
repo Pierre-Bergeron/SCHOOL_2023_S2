@@ -7,8 +7,7 @@ def pull(id_ref, id_sel):
 
 def push(id_ref, id_sel, data_push):
 
-
-
+strSelection = ''
 while not (strSelection == "Q" or strSelection == "q"):
     print("""
   Menu
