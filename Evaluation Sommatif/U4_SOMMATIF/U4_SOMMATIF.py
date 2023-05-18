@@ -9,25 +9,71 @@ import math
 
 class Refrigo:
     def __init__(self):
-        self.intObjLongueur = 0
-        self.intObjHauteur = 0
-        self.intObjProfondeur = 0
-
+        # espace limit de lobjet
         self.intEmpLongueur = 82
         self.intEmpHauteur = 170
         self.intEmpProfondeur = 75
 
+        # option 1 (dimention exterieur, exterieur)
+        self.intObjLongueur = 0
+        self.intObjHauteur = 0
+        self.intObjProfondeur = 0
+
         self.inIntObjLongueur = 0
         self.inIntObjHauteur = 0
         self.inIntObjProfondeur = 0
+        # option 2
+        self.intObjLongueur2 = 0
+        self.intObjHauteur2 = 0
+        self.intObjProfondeur2 = 0
+
+        self.inIntObjLongueur2 = 0
+        self.inIntObjHauteur2 = 0
+        self.inIntObjProfondeur2 = 0
+        # option 3
+        self.intObjLongueur3 = 0
+        self.intObjHauteur3 = 0
+        self.intObjProfondeur3 = 0
+
+        self.inIntObjLongueur3 = 0
+        self.inIntObjHauteur3 = 0
+        self.inIntObjProfondeur3 = 0
 
         self.fit_isTrue = 0
+        self.fit_isTrue2 = 0
+        self.fit_isTrue3 = 0
 
     def check(self):
         if self.intObjLongueur <= self.intEmpLongueur:
             if self.intObjHauteur <= self.intEmpHauteur:
                 if self.intObjProfondeur <= self.intEmpProfondeur:
                     self.fit_isTrue = 1
+                    print("Le réfigérateur va faire")
+                else:
+                    print("Ne fait pas")
+            else:
+                print("Ne fait pas")
+        else:
+            print("Ne fait pas")
+
+    def check2(self):
+        if self.intObjLongueur2 <= self.intEmpLongueur:
+            if self.intObjHauteur2 <= self.intEmpHauteur:
+                if self.intObjProfondeur2 <= self.intEmpProfondeur:
+                    self.fit_isTrue2 = 1
+                    print("Le réfigérateur va faire")
+                else:
+                    print("Ne fait pas")
+            else:
+                print("Ne fait pas")
+        else:
+            print("Ne fait pas")
+
+    def check3(self):
+        if self.intObjLongueur3 <= self.intEmpLongueur:
+            if self.intObjHauteur3 <= self.intEmpHauteur:
+                if self.intObjProfondeur3 <= self.intEmpProfondeur:
+                    self.fit_isTrue3 = 1
                     print("Le réfigérateur va faire")
                 else:
                     print("Ne fait pas")
@@ -43,6 +89,20 @@ class Refrigo:
         else:
             print("Le volume na pas été calculer, tandis que le réfrigérateur ne fait pas.")
 
+    def cal_vol2(self):
+        if self.fit_isTrue2 == 1:
+            volume = self.inIntObjLongueur2 * self.inIntObjHauteur2 * self.inIntObjProfondeur2
+            print("Le volume du réfrigérateur est: {} cm³".format(volume))
+        else:
+            print("Le volume na pas été calculer, tandis que le réfrigérateur ne fait pas.")
+
+    def cal_vol3(self):
+        if self.fit_isTrue3 == 1:
+            volume = self.inIntObjLongueur3 * self.inIntObjHauteur3 * self.inIntObjProfondeur3
+            print("Le volume du réfrigérateur est: {} cm³".format(volume))
+        else:
+            print("Le volume na pas été calculer, tandis que le réfrigérateur ne fait pas.")
+
 
 class MicroOnd:
     def __init__(self):
@@ -53,7 +113,7 @@ objFridge = Refrigo()
 
 
 
-print("Entrée votre option 1;\n")
+print("\nEntrée votre option 1;")
 print("Dimantion exterieur;")
 Refrigo.intObjLongueur = int(input("Longueur du réfrigérateur: "))
 Refrigo.intObjHauteur = int(input("Hauteur du réfrigérateur: "))
@@ -63,7 +123,33 @@ Refrigo.inIntObjLongueur = int(input("Longueur du réfrigérateur: "))
 Refrigo.inIntObjHauteur = int(input("Hauteur du réfrigérateur: "))
 Refrigo.inIntObjProfondeur = int(input("Profondeur du réfrigérateur: "))
 
+print("\nEntrée votre option 2;")
+print("Dimantion exterieur;")
+Refrigo.intObjLongueur2 = int(input("Longueur du réfrigérateur: "))
+Refrigo.intObjHauteur2 = int(input("Hauteur du réfrigérateur: "))
+Refrigo.intObjProfondeur2 = int(input("Profondeur du réfrigérateur: "))
+print("Dimation interieur;")
+Refrigo.inIntObjLongueur2 = int(input("Longueur du réfrigérateur: "))
+Refrigo.inIntObjHauteur2 = int(input("Hauteur du réfrigérateur: "))
+Refrigo.inIntObjProfondeur2 = int(input("Profondeur du réfrigérateur: "))
+
+print("\nEntrée votre option 3;")
+print("Dimantion exterieur;")
+Refrigo.intObjLongueur3 = int(input("Longueur du réfrigérateur: "))
+Refrigo.intObjHauteur3 = int(input("Hauteur du réfrigérateur: "))
+Refrigo.intObjProfondeur3 = int(input("Profondeur du réfrigérateur: "))
+print("Dimation interieur;")
+Refrigo.inIntObjLongueur3 = int(input("Longueur du réfrigérateur: "))
+Refrigo.inIntObjHauteur3 = int(input("Hauteur du réfrigérateur: "))
+Refrigo.inIntObjProfondeur3 = int(input("Profondeur du réfrigérateur: "))
+print("\nOption 1;")
 objFridge.check()
 objFridge.cal_vol()
+print("\nOption 2;")
+objFridge.check2()
+objFridge.cal_vol2()
+print("\nOption 3;")
+objFridge.check3()
+objFridge.cal_vol3()
 
 
