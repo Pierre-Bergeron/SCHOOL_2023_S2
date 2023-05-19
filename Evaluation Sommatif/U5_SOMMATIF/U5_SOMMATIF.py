@@ -15,27 +15,33 @@ class Employee_List(object):
 
 
 employees_all = Employee_List(10)  # Create 10 employee
-employees_all[0] = 'Pierre.Bergeron'
-employees_all[1] = 'Simon.Dubosq'
-employees_all[2] = 'Regis.Godin'
-employees_all[3] = 'Samuel.Baril'
-employees_all[4] = 'Olivier.Girouard'
-employees_all[5] = 'Nicola.Girouard'
-employees_all[6] = 'FirstN.LastN'
-employees_all[7] = 'Hello.World'
-employees_all[8] = 'Pablo.Megan'
-employees_all[9] = 'Soupe.Friday'
-print(employees_all[2])
+employees_all[0] = 'Pierre Bergeron'
+employees_all[1] = 'Simon Dubosq'
+employees_all[2] = 'Regis Godin'
+employees_all[3] = 'Samuel Baril'
+employees_all[4] = 'Olivier Girouard'
+employees_all[5] = 'Nicola Girouard'
+employees_all[6] = 'FirstN LastN'
+employees_all[7] = 'Hello World'
+employees_all[8] = 'Pablo Megan'
+employees_all[9] = 'Soupe Friday'
+
+
+print(employees_all[3])
+
+# def add_emp(name, dob, salerie, ssn):
+
+
 
 strSelection = ''
 while not (strSelection == "Q" or strSelection == "q"):
     print("""
   Menu
   ----
-  1 - 
-  2 - 
-  3 - 
-  4 -  
+  1 - Ajouter un employé
+  2 - Modifier un employé
+  3 - Conjédier un employé
+  4 - Afficher les dossier d'un employé
   5 - 
   6 - 
   Q - Quitter
