@@ -5,9 +5,11 @@
 
 class Employee_List(object):
     def __init__(self, employee_id):
+        self.lent = 0
         self._employee = [None] * employee_id
 
     def __setitem__(self, employee_number, name):
+        self.lent = self.lent + 1
         self._employee[employee_number] = name
 
     def __getitem__(self, employee_number):
@@ -15,7 +17,8 @@ class Employee_List(object):
 
 
 
-employees_all = Employee_List(10)  # Create 10 employee
+emp_len = 10
+employees_all = Employee_List(emp_len)  # Create 10 employee
 employees_all[0] = 'Pierre Bergeron', '12121.00', '000-000-000'
 employees_all[1] = 'Simon Dubosq', '10000.00', '000-000-000'
 employees_all[2] = 'Regis Godin', '10000.00', '000-000-000'
@@ -26,6 +29,9 @@ employees_all[6] = 'FirstN LastN', '10000.00', '000-000-000'
 employees_all[7] = 'Hello World', '10000.00', '000-000-000'
 employees_all[8] = 'Pablo Megan', '10000.00', '000-000-000'
 employees_all[9] = 'Soupe Friday', '10000.00', '000-000-000'
+# employees_list_len = Employee_List()
+# lent = employees_list_len.lent
+# print(lent)
 
 def set_emp_salerie(id, salerie):
     name = employees_all[id][0]
@@ -40,6 +46,8 @@ def set_emp_name(id, name):
     salerie = employees_all[id][1]
     ssn = employees_all[id][2]
     employees_all[id] = name, salerie, ssn
+
+
 
 
 
