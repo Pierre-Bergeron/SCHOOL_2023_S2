@@ -43,7 +43,7 @@ def pull(id_ref, id_sel):
 pageA = tk.Tk()
 pageA.title("Great Company Inventory Sysyem")
 pageA['bg'] = "#ffffff"
-pageA.geometry("300x350")
+pageA.geometry("315x350")
 # 1004x700 original size
 pageA.rowconfigure(0, weight=1)
 pageA.columnconfigure(0, weight=1)
@@ -85,23 +85,25 @@ page6['bg'] = '#E5F6DF'
 page7['bg'] = '#E5F6DF'
 
 # Frame Window Change Btn
-btn_frame_page2 = tk.Button(page1, text="1 - Recherché un article", highlightbackground='#becee5', command=lambda: show_frame(page2))
+btn_frame_page2 = tk.Button(page1, text="Recherché un article", width=25, highlightbackground='#becee5', command=lambda: show_frame(page2))
 btn_frame_page2.grid(row=2, column=1, sticky='n')
-btn_frame_page3 = tk.Button(page1, text="2 - Passer une transaction", highlightbackground='#becee5', command=lambda: show_frame(page3))
+btn_frame_page3 = tk.Button(page1, text="Passer une transaction", width=25, highlightbackground='#becee5', command=lambda: show_frame(page3))
 btn_frame_page3.grid(row=3, column=1, sticky='n')
-btn_frame_page4 = tk.Button(page1, text="3 - Inventaire", highlightbackground='#becee5', command=lambda: show_frame(page4))
+btn_frame_page4 = tk.Button(page1, text="Inventaire", width=25, highlightbackground='#becee5', command=lambda: show_frame(page4))
 btn_frame_page4.grid(row=4, column=1, sticky='n')
-btn_frame_page5 = tk.Button(page1, text="4 - Ajouté ou Modifier un article", highlightbackground='#becee5', command=lambda: show_frame(page5))
+btn_frame_page5 = tk.Button(page1, text="Ajouté ou Modifier un article", width=25, highlightbackground='#becee5', command=lambda: show_frame(page5))
 btn_frame_page5.grid(row=5, column=1, sticky='n')
-btn_frame_page6 = tk.Button(page1, text="5 - Suprimer un article", highlightbackground='#becee5', command=lambda: show_frame(page6))
+btn_frame_page6 = tk.Button(page1, text="Suprimer un article", width=25, highlightbackground='#becee5', command=lambda: show_frame(page6))
 btn_frame_page6.grid(row=6, column=1, sticky='n')
-btn_frame_page7 = tk.Button(page1, text="6 - Liste les articles", highlightbackground='#becee5', command=lambda: show_frame(page7))
+btn_frame_page7 = tk.Button(page1, text="Lister les articles", width=25, highlightbackground='#becee5', command=lambda: show_frame(page7))
 btn_frame_page7.grid(row=7, column=1, sticky='n')
 
 
-blk_space = tk.Label(page1, text='     ', bg="#becee5")
-blk_space.grid(row=0, column=0)
-page1Titre = tk.Label(page1, text='Menu Principale', bg="#D3D3D3")
+blk_space1 = tk.Label(page1, text='', width=4, bg="#D3D3D3")
+blk_space1.grid(row=0, column=0)
+blk_space2 = tk.Label(page1, text='', width=4, bg="#D3D3D3")
+blk_space2.grid(row=0, column=3)
+page1Titre = tk.Label(page1, text='Menu Principale', width=25, bg="#D3D3D3")
 page1Titre.grid(row=0, column=1, sticky='n')
 
 
@@ -123,10 +125,10 @@ def find_article_page2():
 page2_titre = tk.Label(page2, text="Numéro d'article :", bg='#E5F6DF')
 page2_titre.grid(row=0, column=0, sticky='e')
 
-articleNum_Input = tk.Entry(page2, bg="#FFFFFF", width=5, highlightbackground='#becee5')
-articleNum_Input.grid(row=0, column=1, columnspan=2)
+articleNum_Input = tk.Entry(page2, bg="#FFFFFF", width=6, highlightbackground='#E5F6DF')
+articleNum_Input.grid(row=0, column=1)
 
-articleNum_Submit = tk.Button(page2, text="Recherché l'article", highlightbackground='#becee5', command=find_article_page2)
+articleNum_Submit = tk.Button(page2, text="Recherché l'article", highlightbackground='#E5F6DF', command=find_article_page2)
 articleNum_Submit.grid(row=0, column=3, columnspan=2)
 
 desc_page2_lbl = tk.Label(page2, text='Description :', bg='#E5F6DF')
@@ -149,13 +151,11 @@ invt_page2_lbl.grid(row=5, column=0, sticky='e')
 invt_page2_txt = tk.Label(page2, text='', bg='#E5F6DF')
 invt_page2_txt.grid(row=5, column=1)
 
-btn_page2_menu = tk.Button(page2, text="Retour au menu", highlightbackground='#becee5', command=lambda: show_frame(page1))
+page2_space = tk.Label(page2, text='', bg='#E5F6DF')
+page2_space.grid(row=6, column=0)
+btn_page2_menu = tk.Button(page2, text="Retour au menu", highlightbackground='#E5F6DF', command=lambda: show_frame(page1))
 btn_page2_menu.grid(row=7, column=0, columnspan=2)
 
-Status = tk.Label(page2, text='État :', bg='#E5F6DF')
-Status.grid(row=10, column=0, sticky='e')
-Status1 = tk.Label(page2, text='', bg='#E5F6DF')
-Status1.grid(row=3, column=1, columnspan=5)
 
 show_frame(page1)
 pageA.mainloop()
