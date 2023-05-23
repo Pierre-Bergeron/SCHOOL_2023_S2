@@ -82,12 +82,13 @@ page6 = tk.Frame(pageA)
 page7 = tk.Frame(pageA)
 
 
-for frame in (page1, page2, page3, page4, page5, page6, page7):
+for frame in (page1, page2, page3, page3B, page4, page5, page6, page7):
     frame.grid(row=0, column=0, sticky='nsew')
 
 page1['bg'] = '#becee5'
 page2['bg'] = '#E5F6DF'
 page3['bg'] = '#E5F6DF'
+page3B['bg'] = '#E5F6DF'
 page4['bg'] = '#E5F6DF'
 page5['bg'] = '#E5F6DF'
 page6['bg'] = '#E5F6DF'
@@ -216,6 +217,90 @@ desc_btn_sync_3 = tk.Button(page3, text="G", width=2, highlightbackground="#E5F6
 desc_btn_sync_3.grid(row=4, column=3)
 qty_inp_prd_3 = tk.Entry(page3, bg="#FFFFFF", width=6, highlightbackground='#E5F6DF')
 qty_inp_prd_3.grid(row=4, column=4, columnspan=2)
+
+def purchase_review():
+    article_id_sumitted1 = find_ref(id_inp_prd_1.get())
+    article_desc1 = pull(article_id_sumitted1, 1)
+    pur_1_desc['text'] = article_desc1
+
+    qty_buy_1 = int(qty_inp_prd_1.get())
+    prd_1_prix = pull(article_id_sumitted1, 4)
+    prd_1_tot = round(qty_buy_1 * prd_1_prix, 2)
+    pur_1_qty['text'] = qty_buy_1
+    pur_1_prix['text'] = prd_1_prix
+    pur_1_tot['text'] = prd_1_tot
+
+    article_id_sumitted2 = find_ref(id_inp_prd_2.get())
+    article_desc2 = pull(article_id_sumitted2, 1)
+    pur_2_desc['text'] = article_desc2
+
+    qty_buy_2 = int(qty_inp_prd_2.get())
+    prd_2_prix = pull(article_id_sumitted2, 4)
+    prd_2_tot = round(qty_buy_2 * prd_2_prix, 2)
+    pur_2_qty['text'] = qty_buy_2
+    pur_2_prix['text'] = prd_2_prix
+    pur_2_tot['text'] = prd_2_tot
+
+    article_id_sumitted3 = find_ref(id_inp_prd_3.get())
+    article_desc3 = pull(article_id_sumitted3, 1)
+    pur_3_desc['text'] = article_desc3
+
+    qty_buy_3 = int(qty_inp_prd_3.get())
+    prd_3_prix = pull(article_id_sumitted3, 4)
+    prd_3_tot = round(qty_buy_3 * prd_3_prix, 2)
+    pur_3_qty['text'] = qty_buy_3
+    pur_3_prix['text'] = prd_3_prix
+    pur_3_tot['text'] = prd_3_tot
+
+
+    print(prd_1_tot)
+    print(prd_2_tot)
+    print(prd_3_tot)
+    print("here")
+    show_frame(page3B)
+
+
+
+purchase_next = tk.Button(page3, text="Suivent", highlightbackground="#E5F6DF", command=purchase_review)
+purchase_next.grid(row=5, column=0, columnspan=6)
+
+
+label_prh_desc = tk.Label(page3B, text="⬇Produit⬇", bg='#E5F6DF')
+label_prh_desc.grid(row=0, column=0, sticky='n')
+label_prh_qty = tk.Label(page3B, text="⬇Quantité⬇", bg='#E5F6DF')
+label_prh_qty.grid(row=0, column=2, sticky='n')
+label_prh_prix = tk.Label(page3B, text="⬇Prix⬇", bg='#E5F6DF')
+label_prh_prix.grid(row=0, column=3, sticky='n')
+label_prh_tot = tk.Label(page3B, text="⬇Total⬇", bg='#E5F6DF')
+label_prh_tot.grid(row=0, column=4, sticky='n')
+
+pur_1_desc = tk.Label(page3B, text="", font=("Arial", 10), bg='#E5F6DF')
+pur_1_desc.grid(row=1, column=0, sticky='n')
+pur_2_desc = tk.Label(page3B, text="", font=("Arial", 10), bg='#E5F6DF')
+pur_2_desc.grid(row=2, column=0, sticky='n')
+pur_3_desc = tk.Label(page3B, text="", font=("Arial", 10), bg='#E5F6DF')
+pur_3_desc.grid(row=3, column=0, sticky='n')
+
+pur_1_qty = tk.Label(page3B, text="", bg='#E5F6DF')
+pur_1_qty.grid(row=1, column=2, sticky='n')
+pur_2_qty = tk.Label(page3B, text="", bg='#E5F6DF')
+pur_2_qty.grid(row=2, column=2, sticky='n')
+pur_3_qty = tk.Label(page3B, text="", bg='#E5F6DF')
+pur_3_qty.grid(row=3, column=2, sticky='n')
+
+pur_1_prix = tk.Label(page3B, text="", bg='#E5F6DF')
+pur_1_prix.grid(row=1, column=3, sticky='n')
+pur_2_prix = tk.Label(page3B, text="", bg='#E5F6DF')
+pur_2_prix.grid(row=2, column=3, sticky='n')
+pur_3_prix = tk.Label(page3B, text="", bg='#E5F6DF')
+pur_3_prix.grid(row=3, column=3, sticky='n')
+
+pur_1_tot = tk.Label(page3B, text="", bg='#E5F6DF')
+pur_1_tot.grid(row=1, column=4, sticky='n')
+pur_2_tot = tk.Label(page3B, text="", bg='#E5F6DF')
+pur_2_tot.grid(row=2, column=4, sticky='n')
+pur_3_tot = tk.Label(page3B, text="", bg='#E5F6DF')
+pur_3_tot.grid(row=3, column=4, sticky='n')
 
 show_frame(page1)
 pageA.mainloop()
