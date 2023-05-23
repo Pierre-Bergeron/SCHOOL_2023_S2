@@ -193,30 +193,36 @@ label_QTY.grid(row=1, column=4, columnspan=2, sticky='n')
 
 id_inp_prd_1 = tk.Entry(page3, bg="#FFFFFF", width=6, highlightbackground='#E5F6DF')
 id_inp_prd_1.grid(row=2, column=0, columnspan=2)
+id_inp_prd_1.insert(0, "0")
 desc_txt_prd_1 = tk.Label(page3, text='', font=("Arial", 10), width=15, bg="#E5F6DF")
 desc_txt_prd_1.grid(row=2, column=2)
 desc_btn_sync_1 = tk.Button(page3, text="G", width=2, highlightbackground="#E5F6DF", command=get_desc_1)
 desc_btn_sync_1.grid(row=2, column=3)
 qty_inp_prd_1 = tk.Entry(page3, bg="#FFFFFF", width=6, highlightbackground='#E5F6DF')
 qty_inp_prd_1.grid(row=2, column=4, columnspan=2)
+qty_inp_prd_1.insert(0, "0")
 
 id_inp_prd_2 = tk.Entry(page3, bg="#FFFFFF", width=6, highlightbackground='#E5F6DF')
 id_inp_prd_2.grid(row=3, column=0, columnspan=2)
+id_inp_prd_2.insert(0, "0")
 desc_txt_prd_2 = tk.Label(page3, text='', font=("Arial", 10), width=15, bg="#E5F6DF")
 desc_txt_prd_2.grid(row=3, column=2)
 desc_btn_sync_2 = tk.Button(page3, text="G", width=2, highlightbackground="#E5F6DF", command=get_desc_2)
 desc_btn_sync_2.grid(row=3, column=3)
 qty_inp_prd_2 = tk.Entry(page3, bg="#FFFFFF", width=6, highlightbackground='#E5F6DF')
 qty_inp_prd_2.grid(row=3, column=4, columnspan=2)
+qty_inp_prd_2.insert(0, "0")
 
 id_inp_prd_3 = tk.Entry(page3, bg="#FFFFFF", width=6, highlightbackground='#E5F6DF')
 id_inp_prd_3.grid(row=4, column=0, columnspan=2)
+id_inp_prd_3.insert(0, "0")
 desc_txt_prd_3 = tk.Label(page3, text='', font=("Arial", 10), width=15, bg="#E5F6DF")
 desc_txt_prd_3.grid(row=4, column=2)
 desc_btn_sync_3 = tk.Button(page3, text="G", width=2, highlightbackground="#E5F6DF", command=get_desc_3)
 desc_btn_sync_3.grid(row=4, column=3)
 qty_inp_prd_3 = tk.Entry(page3, bg="#FFFFFF", width=6, highlightbackground='#E5F6DF')
 qty_inp_prd_3.grid(row=4, column=4, columnspan=2)
+qty_inp_prd_3.insert(0, "0")
 
 def purchase_review():
     article_id_sumitted1 = find_ref(id_inp_prd_1.get())
@@ -224,8 +230,8 @@ def purchase_review():
     pur_1_desc['text'] = article_desc1
 
     qty_buy_1 = int(qty_inp_prd_1.get())
-    prd_1_prix = pull(article_id_sumitted1, 4)
-    prd_1_tot = round(qty_buy_1 * prd_1_prix, 2)
+    prd_1_prix = float(pull(article_id_sumitted1, 4))
+    prd_1_tot = qty_buy_1 * prd_1_prix
     pur_1_qty['text'] = qty_buy_1
     pur_1_prix['text'] = prd_1_prix
     pur_1_tot['text'] = prd_1_tot
@@ -235,8 +241,8 @@ def purchase_review():
     pur_2_desc['text'] = article_desc2
 
     qty_buy_2 = int(qty_inp_prd_2.get())
-    prd_2_prix = pull(article_id_sumitted2, 4)
-    prd_2_tot = round(qty_buy_2 * prd_2_prix, 2)
+    prd_2_prix = float(pull(article_id_sumitted2, 4))
+    prd_2_tot = qty_buy_2 * prd_2_prix
     pur_2_qty['text'] = qty_buy_2
     pur_2_prix['text'] = prd_2_prix
     pur_2_tot['text'] = prd_2_tot
@@ -246,12 +252,13 @@ def purchase_review():
     pur_3_desc['text'] = article_desc3
 
     qty_buy_3 = int(qty_inp_prd_3.get())
-    prd_3_prix = pull(article_id_sumitted3, 4)
-    prd_3_tot = round(qty_buy_3 * prd_3_prix, 2)
+    prd_3_prix = float(pull(article_id_sumitted3, 4))
+    prd_3_tot = qty_buy_3 * prd_3_prix
     pur_3_qty['text'] = qty_buy_3
     pur_3_prix['text'] = prd_3_prix
     pur_3_tot['text'] = prd_3_tot
 
+    # Add sub, HST, tot calculation here ...
 
     print(prd_1_tot)
     print(prd_2_tot)
