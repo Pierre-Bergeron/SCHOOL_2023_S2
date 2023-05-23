@@ -13,7 +13,7 @@ ArrInv = np.array([[1, 10.0, 50.00, "Actif", "USB power bank"],
                    [3, 2.0, 9.99, "Null", "Power Block USB"],
                    [4, 26.0, 4.99, "Null", "USB Light"],
                    [7, 87.0, 38.77, "Actif", "Wireless Charger"],
-                   [6, 21.0, 21.99, "Null", "White Brd Case (30pc)"],
+                   [6, 21.0, 21.99, "Null", "White Brd (30pc)"],
                    [5, 0.0, 19.98, "Null", "Christmas Lights"]])
 
 # Global function
@@ -128,8 +128,8 @@ page2_titre.grid(row=0, column=0, sticky='e')
 articleNum_Input = tk.Entry(page2, bg="#FFFFFF", width=6, highlightbackground='#E5F6DF')
 articleNum_Input.grid(row=0, column=1)
 
-articleNum_Submit = tk.Button(page2, text="Recherché l'article", highlightbackground='#E5F6DF', command=find_article_page2)
-articleNum_Submit.grid(row=0, column=3, columnspan=2)
+articleNum_Submit = tk.Button(page2, text="Rechercher", highlightbackground='#E5F6DF', command=find_article_page2)
+articleNum_Submit.grid(row=0, column=3)
 
 desc_page2_lbl = tk.Label(page2, text='Description :', bg='#E5F6DF')
 desc_page2_lbl.grid(row=2, column=0, sticky='e')
@@ -154,7 +154,7 @@ invt_page2_txt.grid(row=5, column=1)
 page2_space = tk.Label(page2, text='', bg='#E5F6DF')
 page2_space.grid(row=6, column=0)
 btn_page2_menu = tk.Button(page2, text="Retour au menu", highlightbackground='#E5F6DF', command=lambda: show_frame(page1))
-btn_page2_menu.grid(row=7, column=0, columnspan=2)
+btn_page2_menu.grid(row=7, column=0, sticky='n')
 
 
 show_frame(page1)
