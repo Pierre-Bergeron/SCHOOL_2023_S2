@@ -8,7 +8,8 @@ import math
 
 
 # Article Array
-ArrInv = np.array([[1, 10.0, 50.00, "Actif", "USB power bank"],
+ArrInv = np.array([[0, 0.0, 0.00, "null", "Article Inconnu"],
+                   [1, 10.0, 50.00, "Actif", "USB power bank"],
                    [2, 6.0, 15.99, "Actif", "Phone Charger"],
                    [3, 2.0, 9.99, "Null", "Power Block USB"],
                    [4, 26.0, 4.99, "Null", "USB Light"],
@@ -55,6 +56,7 @@ def show_frame(frame):
 
 def find_ref(id_ref):
     row = 0
+    not_on_file = 1
     arraylen = len(ArrInv)
     while row < arraylen:
         if id_ref == ArrInv[row][0]:
@@ -62,6 +64,12 @@ def find_ref(id_ref):
             return rowId
         else:
             row = row + 1
+    if row >= arraylen:
+        return 1
+    else:
+        print("FUNCTION find_ref FAILED")
+
+
 # element for de l'exam et choix du frame
 
 page1 = tk.Frame(pageA)
