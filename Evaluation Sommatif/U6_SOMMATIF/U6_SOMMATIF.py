@@ -5,7 +5,6 @@
 import tkinter as tk
 import numpy as np
 import math
-import datetime
 
 
 # Article Array
@@ -44,14 +43,11 @@ def pull(id_ref, id_sel):
 pageA = tk.Tk()
 pageA.title("Great Company Inventory Sysyem")
 pageA['bg'] = "#ffffff"
-pageA.geometry("1004x350")
+pageA.geometry("300x350")
 # 1004x700 original size
 pageA.rowconfigure(0, weight=1)
 pageA.columnconfigure(0, weight=1)
 
-# Date settings
-date = datetime.date.today()
-datenow = "Date :", date, "|"
 
 # Frame settings
 def show_frame(frame):
@@ -67,6 +63,7 @@ def find_ref(id_ref):
         else:
             row = row + 1
 # element for de l'exam et choix du frame
+
 page1 = tk.Frame(pageA)
 page2 = tk.Frame(pageA)
 page3 = tk.Frame(pageA)
@@ -88,35 +85,24 @@ page6['bg'] = '#E5F6DF'
 page7['bg'] = '#E5F6DF'
 
 # Frame Window Change Btn
-btn_frame_page2 = tk.Button(page1, text="Page 2", highlightbackground='#becee5', command=lambda: show_frame(page2))
-btn_frame_page2.grid(row=5, column=5, columnspan='2')
-btn_frame_page3 = tk.Button(page1, text="Page 3", highlightbackground='#becee5', command=lambda: show_frame(page3))
-btn_frame_page3.grid(row=6, column=5, columnspan='2')
-btn_frame_page4 = tk.Button(page1, text="Page 4", highlightbackground='#becee5', command=lambda: show_frame(page4))
-btn_frame_page4.grid(row=7, column=5, columnspan='2')
-btn_frame_page5 = tk.Button(page1, text="Page 5", highlightbackground='#becee5', command=lambda: show_frame(page5))
-btn_frame_page5.grid(row=8, column=5, columnspan='2')
-btn_frame_page6 = tk.Button(page1, text="Page 6", highlightbackground='#becee5', command=lambda: show_frame(page6))
-btn_frame_page6.grid(row=9, column=5, columnspan='2')
-btn_frame_page7 = tk.Button(page1, text="Page 7", highlightbackground='#becee5', command=lambda: show_frame(page7))
-btn_frame_page7.grid(row=10, column=5, columnspan='2')
-
-# frame 1 (page1) - option selection screen ( choisir son option)
-SpaceUs = tk.Label(page1, text='                               ')
-SpaceUs.grid(row=0)
-
-page1Titre = tk.Label(page1, text='Menu', bg="#D3D3D3")
-page1Titre.grid(row='0', column='0',  sticky='n')
-
-page2Titre = tk.Label(page1, text="Recherche d'article", bg="#becee5")
-page2Titre.grid(row='1', column='0', sticky='e')
+btn_frame_page2 = tk.Button(page1, text="1 - Recherché un article", highlightbackground='#becee5', command=lambda: show_frame(page2))
+btn_frame_page2.grid(row=2, column=1, sticky='n')
+btn_frame_page3 = tk.Button(page1, text="2 - Passer une transaction", highlightbackground='#becee5', command=lambda: show_frame(page3))
+btn_frame_page3.grid(row=3, column=1, sticky='n')
+btn_frame_page4 = tk.Button(page1, text="3 - Inventaire", highlightbackground='#becee5', command=lambda: show_frame(page4))
+btn_frame_page4.grid(row=4, column=1, sticky='n')
+btn_frame_page5 = tk.Button(page1, text="4 - Ajouté ou Modifier un article", highlightbackground='#becee5', command=lambda: show_frame(page5))
+btn_frame_page5.grid(row=5, column=1, sticky='n')
+btn_frame_page6 = tk.Button(page1, text="5 - Suprimer un article", highlightbackground='#becee5', command=lambda: show_frame(page6))
+btn_frame_page6.grid(row=6, column=1, sticky='n')
+btn_frame_page7 = tk.Button(page1, text="6 - Liste les articles", highlightbackground='#becee5', command=lambda: show_frame(page7))
+btn_frame_page7.grid(row=7, column=1, sticky='n')
 
 
-# UF_CH_SAVE = tk.Button(page1, text="Acheter", highlightbackground='#becee5', command=None)
-# UF_CH_SAVE.grid(row=2, column=5, columnspan='2')
-
-lotterieChoiseDate = tk.Label(page1, text=datenow, bg='#becee5')
-lotterieChoiseDate.grid(row=2, column='0', sticky='e')
+blk_space = tk.Label(page1, text='     ', bg="#becee5")
+blk_space.grid(row=0, column=0)
+page1Titre = tk.Label(page1, text='Menu Principale', bg="#D3D3D3")
+page1Titre.grid(row=0, column=1, sticky='n')
 
 
 # Demontre les numero que tu a choisi dans le 2e frame
@@ -133,8 +119,9 @@ def find_article_page2():
     invt_page2_txt['text'] = article_invt
 
 # frame 2 (page 2) search item by article
-Titre2 = tk.Label(page2, text="Numéro d'article :", bg='#E5F6DF')
-Titre2.grid(row=0, column=0, sticky='e')
+
+page2_titre = tk.Label(page2, text="Numéro d'article :", bg='#E5F6DF')
+page2_titre.grid(row=0, column=0, sticky='e')
 
 articleNum_Input = tk.Entry(page2, bg="#FFFFFF", width=5, highlightbackground='#becee5')
 articleNum_Input.grid(row=0, column=1, columnspan=2)
