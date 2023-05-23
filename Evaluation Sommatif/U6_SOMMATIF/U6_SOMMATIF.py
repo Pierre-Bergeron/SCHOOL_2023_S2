@@ -75,6 +75,7 @@ def find_ref(id_ref):
 page1 = tk.Frame(pageA)
 page2 = tk.Frame(pageA)
 page3 = tk.Frame(pageA)
+page3B = tk.Frame(pageA)
 page4 = tk.Frame(pageA)
 page5 = tk.Frame(pageA)
 page6 = tk.Frame(pageA)
@@ -129,7 +130,6 @@ def find_article_page2():
     invt_page2_txt['text'] = article_invt
 
 # frame 2 (page 2) search item by article
-
 page2_titre = tk.Label(page2, text="Numéro d'article :", bg='#E5F6DF')
 page2_titre.grid(row=0, column=0, sticky='e')
 
@@ -164,6 +164,58 @@ page2_space.grid(row=6, column=0)
 btn_page2_menu = tk.Button(page2, text="Retour au menu", highlightbackground='#E5F6DF', command=lambda: show_frame(page1))
 btn_page2_menu.grid(row=7, column=0, sticky='n')
 
+# Page 3 (Transaction)
+def get_desc_1():
+    article_id_sumitted = find_ref(id_inp_prd_1.get())
+    article_desc = pull(article_id_sumitted, 1)
+    desc_txt_prd_1['text'] = article_desc
+
+def get_desc_2():
+    article_id_sumitted = find_ref(id_inp_prd_2.get())
+    article_desc = pull(article_id_sumitted, 1)
+    desc_txt_prd_2['text'] = article_desc
+
+def get_desc_3():
+    article_id_sumitted = find_ref(id_inp_prd_3.get())
+    article_desc = pull(article_id_sumitted, 1)
+    desc_txt_prd_3['text'] = article_desc
+
+
+page3_titre = tk.Label(page3, text="Article à acheté;", bg='#E5F6DF')
+page3_titre.grid(row=0, column=0, columnspan=2, sticky='n')
+label_REF = tk.Label(page3, text="⬇Article ID⬇", bg='#E5F6DF')
+label_REF.grid(row=1, column=0, columnspan=2, sticky='n')
+label_DESC = tk.Label(page3, text="⬇Description⬇", bg='#E5F6DF')
+label_DESC.grid(row=1, column=2, columnspan=2, sticky='n')
+label_QTY = tk.Label(page3, text="⬇Quantité⬇", bg='#E5F6DF')
+label_QTY.grid(row=1, column=4, columnspan=2, sticky='n')
+
+id_inp_prd_1 = tk.Entry(page3, bg="#FFFFFF", width=6, highlightbackground='#E5F6DF')
+id_inp_prd_1.grid(row=2, column=0, columnspan=2)
+desc_txt_prd_1 = tk.Label(page3, text='', font=("Arial", 10), width=15, bg="#E5F6DF")
+desc_txt_prd_1.grid(row=2, column=2)
+desc_btn_sync_1 = tk.Button(page3, text="G", width=2, highlightbackground="#E5F6DF", command=get_desc_1)
+desc_btn_sync_1.grid(row=2, column=3)
+qty_inp_prd_1 = tk.Entry(page3, bg="#FFFFFF", width=6, highlightbackground='#E5F6DF')
+qty_inp_prd_1.grid(row=2, column=4, columnspan=2)
+
+id_inp_prd_2 = tk.Entry(page3, bg="#FFFFFF", width=6, highlightbackground='#E5F6DF')
+id_inp_prd_2.grid(row=3, column=0, columnspan=2)
+desc_txt_prd_2 = tk.Label(page3, text='', font=("Arial", 10), width=15, bg="#E5F6DF")
+desc_txt_prd_2.grid(row=3, column=2)
+desc_btn_sync_2 = tk.Button(page3, text="G", width=2, highlightbackground="#E5F6DF", command=get_desc_2)
+desc_btn_sync_2.grid(row=3, column=3)
+qty_inp_prd_2 = tk.Entry(page3, bg="#FFFFFF", width=6, highlightbackground='#E5F6DF')
+qty_inp_prd_2.grid(row=3, column=4, columnspan=2)
+
+id_inp_prd_3 = tk.Entry(page3, bg="#FFFFFF", width=6, highlightbackground='#E5F6DF')
+id_inp_prd_3.grid(row=4, column=0, columnspan=2)
+desc_txt_prd_3 = tk.Label(page3, text='', font=("Arial", 10), width=15, bg="#E5F6DF")
+desc_txt_prd_3.grid(row=4, column=2)
+desc_btn_sync_3 = tk.Button(page3, text="G", width=2, highlightbackground="#E5F6DF", command=get_desc_3)
+desc_btn_sync_3.grid(row=4, column=3)
+qty_inp_prd_3 = tk.Entry(page3, bg="#FFFFFF", width=6, highlightbackground='#E5F6DF')
+qty_inp_prd_3.grid(row=4, column=4, columnspan=2)
 
 show_frame(page1)
 pageA.mainloop()
