@@ -111,23 +111,6 @@ page1Titre.grid(row='0', column='0',  sticky='n')
 page2Titre = tk.Label(page1, text="Recherche d'article", bg="#becee5")
 page2Titre.grid(row='1', column='0', sticky='e')
 
-UF_CH1 = tk.Entry(page1, bg="#FFFFFF", width='5', highlightbackground='#becee5')
-UF_CH1.grid(row=1, column=1)
-UF_CH1.insert(0, "0")
-UF_CH2 = tk.Entry(page1, bg="#FFFFFF", width='5', highlightbackground='#becee5')
-UF_CH2.grid(row=1, column=2)
-UF_CH2.insert(0, "0")
-UF_CH3 = tk.Entry(page1, bg="#FFFFFF", width='5', highlightbackground='#becee5')
-UF_CH3.grid(row=1, column=3)
-UF_CH3.insert(0, "0")
-UF_CH4 = tk.Entry(page1, bg="#FFFFFF", width='5', highlightbackground='#becee5')
-UF_CH4.grid(row=1, column=4)
-UF_CH4.insert(0, "0")
-UF_CH5 = tk.Entry(page1, bg="#FFFFFF", width='5', highlightbackground='#becee5')
-UF_CH5.grid(row=1, column=5)
-UF_CH5.insert(0, "0")
-UF_CH6 = tk.Entry(page1, bg="#FFFFFF", width='5', highlightbackground='#becee5')
-
 
 # UF_CH_SAVE = tk.Button(page1, text="Acheter", highlightbackground='#becee5', command=None)
 # UF_CH_SAVE.grid(row=2, column=5, columnspan='2')
@@ -179,7 +162,8 @@ invt_page2_lbl.grid(row=5, column=0, sticky='e')
 invt_page2_txt = tk.Label(page2, text='', bg='#E5F6DF')
 invt_page2_txt.grid(row=5, column=1)
 
-
+btn_page2_menu = tk.Button(page2, text="Retour au menu", highlightbackground='#becee5', command=lambda: show_frame(page1))
+btn_page2_menu.grid(row=7, column=0, columnspan=2)
 
 Status = tk.Label(page2, text='État :', bg='#E5F6DF')
 Status.grid(row=10, column=0, sticky='e')
