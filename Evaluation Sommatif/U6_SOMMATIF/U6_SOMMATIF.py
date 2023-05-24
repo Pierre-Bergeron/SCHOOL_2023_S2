@@ -407,6 +407,47 @@ btn_frame_page4A.grid(row=1, column=1, sticky='n')
 btn_frame_page4B = tk.Button(page4, text="Commande Recu", width=25, highlightbackground='#becee5', command=lambda: show_frame(page4B))
 btn_frame_page4B.grid(row=2, column=1, sticky='n')
 
+def invt_4A_detail():
+    id_4A = find_ref(page4A_id_inp.get())
+    desc_4A = pull(id_4A, 1)
+    prev_qty_4A = pull(id_4A, 3)
+    page4A_desc_txt['text'] = desc_4A
+    page4A_curCT_txt['text'] = prev_qty_4A
+
+def set_inventory_ct():
+    id_4A_s = find_ref(page4A_id_inp.get())
+    new_qty_4A = int(page4A_accCT_inp.get())
+    push(id_4A_s, 3, new_qty_4A)
+    show_frame(confirm_page)
+
+
+page4A_id_label = tk.Label(page4A, text="ID d'article :", bg='#E5F6DF')
+page4A_id_label.grid(row=0, column=0, sticky='e')
+page4A_id_inp = tk.Entry(page4A, bg="#FFFFFF", width=5, highlightbackground='#E5F6DF')
+page4A_id_inp.grid(row=0, column=2, sticky='n')
+page4A_id_detail = tk.Button(page4A, text="Détail sur l'article", highlightbackground="#E5F6DF", command=invt_4A_detail)
+page4A_id_detail.grid(row=0, column=3, columnspan=2, sticky='n')
+
+page4A_desc_label = tk.Label(page4A, text="Description :", bg='#E5F6DF')
+page4A_desc_label.grid(row=2, column=0, sticky='e')
+page4A_desc_txt = tk.Label(page4A, text="", bg='#E5F6DF')
+page4A_desc_txt.grid(row=2, column=1, columnspan=3)
+
+page4A_curCT_label = tk.Label(page4A, text="Quantité :", bg='#E5F6DF')
+page4A_curCT_label.grid(row=3, column=0, sticky='e')
+page4A_curCT_txt = tk.Label(page4A, text="", bg='#E5F6DF')
+page4A_curCT_txt.grid(row=3, column=1, columnspan=3)
+
+page4A_accCT_label = tk.Label(page4A, text="Quantité acctuel :", bg='#E5F6DF')
+page4A_accCT_label.grid(row=4, column=0, sticky='e')
+page4A_accCT_inp = tk.Entry(page4A, bg="#FFFFFF", width=5, highlightbackground='#E5F6DF')
+page4A_accCT_inp.grid(row=4, column=2, sticky='n')
+page4A_id_subm = tk.Button(page4A, text="Soummettre", highlightbackground="#E5F6DF", command=set_inventory_ct)
+page4A_id_subm.grid(row=4, column=3, columnspan=2, sticky='n')
+
+
+
+
 
 
 confirm_page_titre = tk.Label(confirm_page, text="Demande acceptée", font=("Arial", 35), bg='#2FEF10')
