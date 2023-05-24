@@ -446,6 +446,64 @@ page4A_id_subm = tk.Button(page4A, text="Soummettre", highlightbackground="#E5F6
 page4A_id_subm.grid(row=4, column=3, columnspan=2, sticky='n')
 
 
+def article_4B_detail():
+    id_4B = find_ref(page4B_id_inp.get())
+    desc_4B = pull(id_4B, 1)
+    page4B_desc_label['text'] = "Descrtiption :"
+    page4B_desc_txt['text'] = desc_4B
+    page4B_rcvCT_label['text'] = "Quantité Recu:"
+    page4B_rcvCT_inp['bg'] = "#FFFFFF"
+    page4B_rcvCT_inp['borderwidth'] = 2
+    page4B_rcv_subm['text'] = "Soummettre"
+    page4B_rcv_subm['borderwidth'] = 2
+
+
+
+
+def set_rcv():
+    id_4B = find_ref(page4B_id_inp.get())
+    prev_qty_4B = float(pull(id_4B, 3))
+    add_qty_4B = int(page4B_rcvCT_inp.get())
+    new_qty = prev_qty_4B + add_qty_4B
+    push(id_4B, 3, new_qty)
+    show_frame(confirm_page)
+
+
+# page inventory received
+page4B_id_label = tk.Label(page4B, text="ID d'article :", bg='#E5F6DF')
+page4B_id_label.grid(row=0, column=0, sticky='e')
+page4B_id_inp = tk.Entry(page4B, bg="#FFFFFF", width=5, highlightbackground='#E5F6DF')
+page4B_id_inp.grid(row=0, column=2, sticky='n')
+page4B_id_detail = tk.Button(page4B, text="Détail sur l'article", highlightbackground="#E5F6DF", command=article_4B_detail)
+page4B_id_detail.grid(row=0, column=3, columnspan=2, sticky='n')
+
+# Description :
+page4B_desc_label = tk.Label(page4B, text="", bg='#E5F6DF')
+page4B_desc_label.grid(row=2, column=0, sticky='e')
+page4B_desc_txt = tk.Label(page4B, text="", bg='#E5F6DF')
+page4B_desc_txt.grid(row=2, column=1, columnspan=3)
+
+# Quantité acctuel :
+page4B_rcvCT_label = tk.Label(page4B, text="", bg='#E5F6DF')
+page4B_rcvCT_label.grid(row=3, column=0, sticky='e')
+# hex#FFFFFF
+page4B_rcvCT_inp = tk.Entry(page4B, bg="#E5F6DF", width=5, highlightbackground='#E5F6DF', borderwidth=0)
+page4B_rcvCT_inp.grid(row=3, column=2, sticky='n')
+# Soummettre
+
+page4B_rcv_subm = tk.Button(page4B, text="", highlightbackground="#E5F6DF", width=0, bg='#E5F6DF', borderwidth=0, command=set_rcv)
+page4B_rcv_subm.grid(row=3, column=3, columnspan=2, sticky='n')
+
+
+
+
+
+
+
+
+
+
+
 
 
 
