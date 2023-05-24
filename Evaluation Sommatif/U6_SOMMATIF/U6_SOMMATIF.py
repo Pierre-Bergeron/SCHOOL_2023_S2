@@ -101,12 +101,14 @@ page4 = tk.Frame(pageA)
 page4A = tk.Frame(pageA)
 page4B = tk.Frame(pageA)
 page5 = tk.Frame(pageA)
+page5A = tk.Frame(pageA)
+page5B = tk.Frame(pageA)
 page6 = tk.Frame(pageA)
 page7 = tk.Frame(pageA)
 confirm_page = tk.Frame(pageA)
 
 
-for frame in (page1, page2, page3, page3B, page4, page4A, page4B, page5, page6, page7, confirm_page):
+for frame in (page1, page2, page3, page3B, page4, page4A, page4B, page5, page5A, page5B, page6, page7, confirm_page):
     frame.grid(row=0, column=0, sticky='nsew')
 
 page1['bg'] = '#becee5'
@@ -116,7 +118,9 @@ page3B['bg'] = '#E5F6DF'
 page4['bg'] = '#becee5'
 page4A['bg'] = '#E5F6DF'
 page4B['bg'] = '#E5F6DF'
-page5['bg'] = '#E5F6DF'
+page5['bg'] = '#becee5'
+page5A['bg'] = '#E5F6DF'
+page5B['bg'] = '#E5F6DF'
 page6['bg'] = '#E5F6DF'
 page7['bg'] = '#E5F6DF'
 confirm_page['bg'] = "#2FEF10"
@@ -458,8 +462,6 @@ def article_4B_detail():
     page4B_rcv_subm['borderwidth'] = 2
 
 
-
-
 def set_rcv():
     id_4B = find_ref(page4B_id_inp.get())
     prev_qty_4B = float(pull(id_4B, 3))
@@ -476,13 +478,11 @@ page4B_id_inp = tk.Entry(page4B, bg="#FFFFFF", width=5, highlightbackground='#E5
 page4B_id_inp.grid(row=0, column=2, sticky='n')
 page4B_id_detail = tk.Button(page4B, text="Détail sur l'article", highlightbackground="#E5F6DF", command=article_4B_detail)
 page4B_id_detail.grid(row=0, column=3, columnspan=2, sticky='n')
-
 # Description :
 page4B_desc_label = tk.Label(page4B, text="", bg='#E5F6DF')
 page4B_desc_label.grid(row=2, column=0, sticky='e')
 page4B_desc_txt = tk.Label(page4B, text="", bg='#E5F6DF')
 page4B_desc_txt.grid(row=2, column=1, columnspan=3)
-
 # Quantité acctuel :
 page4B_rcvCT_label = tk.Label(page4B, text="", bg='#E5F6DF')
 page4B_rcvCT_label.grid(row=3, column=0, sticky='e')
@@ -490,16 +490,18 @@ page4B_rcvCT_label.grid(row=3, column=0, sticky='e')
 page4B_rcvCT_inp = tk.Entry(page4B, bg="#E5F6DF", width=5, highlightbackground='#E5F6DF', borderwidth=0)
 page4B_rcvCT_inp.grid(row=3, column=2, sticky='n')
 # Soummettre
-
 page4B_rcv_subm = tk.Button(page4B, text="", highlightbackground="#E5F6DF", width=0, bg='#E5F6DF', borderwidth=0, command=set_rcv)
 page4B_rcv_subm.grid(row=3, column=3, columnspan=2, sticky='n')
 
 
+option_page5 = tk.Label(page5, text=" Options de changement", font=("Arial", 28), bg='#becee5')
+option_page5.grid(row=0, column=0, columnspan=3, sticky='n')
+btn_frame_page5A = tk.Button(page5, text="Ajouté un article", width=25, highlightbackground='#becee5', command=lambda: show_frame(page5A))
+btn_frame_page5A.grid(row=1, column=1, sticky='n')
+btn_frame_page5B = tk.Button(page5, text="Modifié un article", width=25, highlightbackground='#becee5', command=lambda: show_frame(page5B))
+btn_frame_page5B.grid(row=2, column=1, sticky='n')
 
-
-
-
-
+# add page 5A and 5B below this line
 
 
 
@@ -512,9 +514,6 @@ confirm_page_titre = tk.Label(confirm_page, text="Demande acceptée", font=("Ari
 confirm_page_titre.grid(row=0, column=0, columnspan=3, sticky='n')
 confirm_page_rtn = tk.Button(confirm_page, text="Retour au menu", highlightbackground="#2FEF10", command=lambda: show_frame(page1))
 confirm_page_rtn.grid(row=1, column=0, columnspan=3)
-
-
-
 
 show_frame(page1)
 pageA.mainloop()
