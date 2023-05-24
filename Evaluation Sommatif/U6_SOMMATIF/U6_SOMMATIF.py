@@ -40,6 +40,27 @@ def pull(id_ref, id_sel):
         null = "null"
         return null
 
+
+# 1=DESC, 2=IPFR, 3=QTY, 4=COST
+def push(id_ref, id_sel, data_push):
+    scr_id = id_ref - 1
+    if id_sel == 1:
+        ArrInv[scr_id][4] = data_push
+        return
+    elif id_sel == 2:
+        ArrInv[scr_id][3] = data_push
+        return
+    elif id_sel == 3:
+        ArrInv[scr_id][1] = data_push
+        return
+    elif id_sel == 4:
+        ArrInv[scr_id][2] = data_push
+        return
+    else:
+        null = "null"
+        return null
+
+
 # Main window settings
 pageA = tk.Tk()
 pageA.title("Great Company Inventory Sysyem")
@@ -80,9 +101,10 @@ page4 = tk.Frame(pageA)
 page5 = tk.Frame(pageA)
 page6 = tk.Frame(pageA)
 page7 = tk.Frame(pageA)
+confirm_page = tk.Frame(pageA)
 
 
-for frame in (page1, page2, page3, page3B, page4, page5, page6, page7):
+for frame in (page1, page2, page3, page3B, page4, page5, page6, page7, confirm_page):
     frame.grid(row=0, column=0, sticky='nsew')
 
 page1['bg'] = '#becee5'
@@ -93,6 +115,7 @@ page4['bg'] = '#E5F6DF'
 page5['bg'] = '#E5F6DF'
 page6['bg'] = '#E5F6DF'
 page7['bg'] = '#E5F6DF'
+confirm_page['bg'] = "#2FEF10"
 
 # Frame Window Change Btn
 btn_frame_page2 = tk.Button(page1, text="Recherché un article", width=25, highlightbackground='#becee5', command=lambda: show_frame(page2))
@@ -258,14 +281,46 @@ def purchase_review():
     pur_3_prix['text'] = prd_3_prix
     pur_3_tot['text'] = prd_3_tot
 
+    art_id_prd1['text'] = id_inp_prd_1.get()
+    art_id_prd2['text'] = id_inp_prd_2.get()
+    art_id_prd3['text'] = id_inp_prd_3.get()
+
+
     # Add sub, HST, tot calculation here ...
 
-    print(prd_1_tot)
-    print(prd_2_tot)
-    print(prd_3_tot)
-    print("here")
+    sub_total = prd_1_tot + prd_2_tot + prd_3_tot
+    sub_tot_rnd = round(sub_total, 2)
+    fnl_sub_txt['text'] = sub_tot_rnd
+    hst_total = sub_total * 0.13
+    hst_total_rnd = round(hst_total, 2)
+    fnl_hst_txt['text'] = hst_total_rnd
+    tot_total = sub_total * 1.13
+    tot_total_rnd = round(tot_total, 2)
+    fnl_tot_txt['text'] = tot_total_rnd
+
     show_frame(page3B)
 
+
+def trans_approved():
+    prd_1_qty = int(qty_inp_prd_1.get())
+    prd_2_qty = int(qty_inp_prd_2.get())
+    prd_3_qty = int(qty_inp_prd_3.get())
+    article_id_1 = int(id_inp_prd_1.get())
+    article_id_2 = int(id_inp_prd_2.get())
+    article_id_3 = int(id_inp_prd_3.get())
+
+    invt_new_qty1 = float(pull(article_id_1, 3)) - prd_1_qty
+    push(article_id_1, 3, invt_new_qty1)
+    invt_new_qty2 = float(pull(article_id_2, 3)) - prd_2_qty
+    push(article_id_2, 3, invt_new_qty2)
+    invt_new_qty3 = float(pull(article_id_3, 3)) - prd_3_qty
+    push(article_id_3, 3, invt_new_qty3)
+
+    show_frame(confirm_page)
+
+
+
+# 1=DESC, 2=IPFR, 3=QTY, 4=COST
 
 
 purchase_next = tk.Button(page3, text="Suivent", highlightbackground="#E5F6DF", command=purchase_review)
@@ -308,6 +363,50 @@ pur_2_tot = tk.Label(page3B, text="", bg='#E5F6DF')
 pur_2_tot.grid(row=2, column=4, sticky='n')
 pur_3_tot = tk.Label(page3B, text="", bg='#E5F6DF')
 pur_3_tot.grid(row=3, column=4, sticky='n')
+
+
+clr_row_4_1 = tk.Label(page3B, text='', width=10, bg="#D3D3D3")
+clr_row_4_1.grid(row=4, column=0)
+clr_row_4_2 = tk.Label(page3B, text='', width=10, bg="#D3D3D3")
+clr_row_4_2.grid(row=4, column=2)
+clr_row_4_3 = tk.Label(page3B, text='', width=6, bg="#D3D3D3")
+clr_row_4_3.grid(row=4, column=3)
+
+label_sub_tot = tk.Label(page3B, text='Sous-Total ➡︎', bg='#E5F6DF')
+label_sub_tot.grid(row=5, column=0, sticky='e')
+label_hst_tot = tk.Label(page3B, text='HST 13% ➡︎', bg='#E5F6DF')
+label_hst_tot.grid(row=6, column=0, sticky='e')
+label_tot_tot = tk.Label(page3B, text='Total ➡︎', bg='#E5F6DF')
+label_tot_tot.grid(row=7, column=0, sticky='e')
+
+fnl_sub_txt = tk.Label(page3B, text='', bg='#E5F6DF')
+fnl_sub_txt.grid(row=5, column=4, sticky='n')
+fnl_hst_txt = tk.Label(page3B, text='', bg='#E5F6DF')
+fnl_hst_txt.grid(row=6, column=4, sticky='n')
+fnl_tot_txt = tk.Label(page3B, text='', bg='#E5F6DF')
+fnl_tot_txt.grid(row=7, column=4, sticky='n')
+
+art_id_prd1 = tk.Label(page3B, text='', bg='#E5F6DF', fg='#E5F6DF')
+art_id_prd1.grid(row=8, column=0, sticky='n')
+art_id_prd2 = tk.Label(page3B, text='', bg='#E5F6DF', fg='#E5F6DF')
+art_id_prd2.grid(row=9, column=0, sticky='n')
+art_id_prd3 = tk.Label(page3B, text='', bg='#E5F6DF', fg='#E5F6DF')
+art_id_prd3.grid(row=10, column=0, sticky='n')
+
+purchase_aprv = tk.Button(page3B, text="Apprové la transaction", highlightbackground="#E5F6DF", command=trans_approved)
+purchase_aprv.grid(row=8, column=1, columnspan=3)
+
+
+
+
+
+confirm_page_titre = tk.Label(confirm_page, text="Demande acceptée", font=("Arial", 35), bg='#2FEF10')
+confirm_page_titre.grid(row=0, column=0, columnspan=3, sticky='n')
+confirm_page_rtn = tk.Button(confirm_page, text="Retour au menu", highlightbackground="#2FEF10", command=lambda: show_frame(page1))
+confirm_page_rtn.grid(row=1, column=0, columnspan=3)
+
+
+
 
 show_frame(page1)
 pageA.mainloop()
