@@ -113,7 +113,7 @@ page1['bg'] = '#becee5'
 page2['bg'] = '#E5F6DF'
 page3['bg'] = '#E5F6DF'
 page3B['bg'] = '#E5F6DF'
-page4['bg'] = '#E5F6DF'
+page4['bg'] = '#becee5'
 page4A['bg'] = '#E5F6DF'
 page4B['bg'] = '#E5F6DF'
 page5['bg'] = '#E5F6DF'
@@ -400,7 +400,12 @@ art_id_prd3.grid(row=10, column=0, sticky='n')
 purchase_aprv = tk.Button(page3B, text="Apprové la transaction", highlightbackground="#E5F6DF", command=trans_approved)
 purchase_aprv.grid(row=8, column=1, columnspan=3)
 
-
+option_page4 = tk.Label(page4, text="Options d'inventaire", font=("Arial", 34), bg='#becee5')
+option_page4.grid(row=0, column=0, columnspan=3, sticky='n')
+btn_frame_page4A = tk.Button(page4, text="Comté un article", width=25, highlightbackground='#becee5', command=lambda: show_frame(page4A))
+btn_frame_page4A.grid(row=1, column=1, sticky='n')
+btn_frame_page4B = tk.Button(page4, text="Commande Recu", width=25, highlightbackground='#becee5', command=lambda: show_frame(page4B))
+btn_frame_page4B.grid(row=2, column=1, sticky='n')
 
 
 
