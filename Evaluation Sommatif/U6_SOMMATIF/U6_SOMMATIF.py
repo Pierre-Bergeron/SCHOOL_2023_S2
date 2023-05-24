@@ -98,13 +98,15 @@ page2 = tk.Frame(pageA)
 page3 = tk.Frame(pageA)
 page3B = tk.Frame(pageA)
 page4 = tk.Frame(pageA)
+page4A = tk.Frame(pageA)
+page4B = tk.Frame(pageA)
 page5 = tk.Frame(pageA)
 page6 = tk.Frame(pageA)
 page7 = tk.Frame(pageA)
 confirm_page = tk.Frame(pageA)
 
 
-for frame in (page1, page2, page3, page3B, page4, page5, page6, page7, confirm_page):
+for frame in (page1, page2, page3, page3B, page4, page4A, page4B, page5, page6, page7, confirm_page):
     frame.grid(row=0, column=0, sticky='nsew')
 
 page1['bg'] = '#becee5'
@@ -112,6 +114,8 @@ page2['bg'] = '#E5F6DF'
 page3['bg'] = '#E5F6DF'
 page3B['bg'] = '#E5F6DF'
 page4['bg'] = '#E5F6DF'
+page4A['bg'] = '#E5F6DF'
+page4B['bg'] = '#E5F6DF'
 page5['bg'] = '#E5F6DF'
 page6['bg'] = '#E5F6DF'
 page7['bg'] = '#E5F6DF'
