@@ -66,7 +66,6 @@ pageA = tk.Tk()
 pageA.title("Great Company Inventory Sysyem")
 pageA['bg'] = "#ffffff"
 pageA.geometry("315x350")
-# 1004x700 original size
 pageA.rowconfigure(0, weight=1)
 pageA.columnconfigure(0, weight=1)
 
@@ -91,7 +90,7 @@ def find_ref(id_ref):
         print("FUNCTION find_ref FAILED")
 
 
-# element for de l'exam et choix du frame
+# element for de l'exam et options de frame
 
 page1 = tk.Frame(pageA)
 page2 = tk.Frame(pageA)
@@ -111,6 +110,7 @@ confirm_page = tk.Frame(pageA)
 for frame in (page1, page2, page3, page3B, page4, page4A, page4B, page5, page5A, page5B, page6, page7, confirm_page):
     frame.grid(row=0, column=0, sticky='nsew')
 
+# background de tous les frame
 page1['bg'] = '#becee5'
 page2['bg'] = '#E5F6DF'
 page3['bg'] = '#E5F6DF'
@@ -125,7 +125,7 @@ page6['bg'] = '#E5F6DF'
 page7['bg'] = '#E5F6DF'
 confirm_page['bg'] = "#2FEF10"
 
-# Frame Window Change Btn
+# Frame Window option Btn
 btn_frame_page2 = tk.Button(page1, text="Recherché un article", width=25, highlightbackground='#becee5', command=lambda: show_frame(page2))
 btn_frame_page2.grid(row=2, column=1, sticky='n')
 btn_frame_page3 = tk.Button(page1, text="Passer une transaction", width=25, highlightbackground='#becee5', command=lambda: show_frame(page3))
@@ -146,9 +146,6 @@ blk_space2 = tk.Label(page1, text='', width=4, bg="#D3D3D3")
 blk_space2.grid(row=0, column=3)
 page1Titre = tk.Label(page1, text='Menu Principale', width=25, bg="#D3D3D3")
 page1Titre.grid(row=0, column=1, sticky='n')
-
-
-# Demontre les numero que tu a choisi dans le 2e frame
 def find_article_page2():
     article_id_sumitted = find_ref(articleNum_Input.get())
     article_desc = pull(article_id_sumitted, 1)
@@ -160,6 +157,7 @@ def find_article_page2():
     prix_page2_txt['text'] = article_prix
     ipfr_page2_txt['text'] = article_ipfr
     invt_page2_txt['text'] = article_invt
+
 
 # frame 2 (page 2) search item by article
 page2_titre = tk.Label(page2, text="Numéro d'article :", bg='#E5F6DF')
