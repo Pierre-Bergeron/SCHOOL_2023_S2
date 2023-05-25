@@ -134,9 +134,9 @@ btn_frame_page4 = tk.Button(page1, text="Inventaire", width=25, highlightbackgro
 btn_frame_page4.grid(row=4, column=1, sticky='n')
 btn_frame_page5 = tk.Button(page1, text="Ajouté ou Modifier un article", width=25, highlightbackground='#becee5', command=lambda: show_frame(page5))
 btn_frame_page5.grid(row=5, column=1, sticky='n')
-btn_frame_page6 = tk.Button(page1, text="Suprimer un article", width=25, highlightbackground='#becee5', command=lambda: show_frame(page6))
+btn_frame_page6 = tk.Button(page1, state='disabled', text="Suprimer un article", width=25, highlightbackground='#becee5', command=lambda: show_frame(page6))
 btn_frame_page6.grid(row=6, column=1, sticky='n')
-btn_frame_page7 = tk.Button(page1, text="Lister les articles", width=25, highlightbackground='#becee5', command=lambda: show_frame(page7))
+btn_frame_page7 = tk.Button(page1, state='disabled', text="Lister les articles", width=25, highlightbackground='#becee5', command=lambda: show_frame(page7))
 btn_frame_page7.grid(row=7, column=1, sticky='n')
 
 
@@ -496,7 +496,7 @@ page4B_rcv_subm.grid(row=3, column=3, columnspan=2, sticky='n')
 # page 5 options
 option_page5 = tk.Label(page5, text=" Options de changement", font=("Arial", 28), bg='#becee5')
 option_page5.grid(row=0, column=0, columnspan=3, sticky='n')
-btn_frame_page5A = tk.Button(page5, text="Ajouté un article", width=25, highlightbackground='#becee5', command=lambda: show_frame(page5A))
+btn_frame_page5A = tk.Button(page5, text="Ajouté un article", width=25, highlightbackground='#becee5', state='disabled', command=lambda: show_frame(page5A))
 btn_frame_page5A.grid(row=1, column=1, sticky='n')
 btn_frame_page5B = tk.Button(page5, text="Modifié un article", width=25, highlightbackground='#becee5', command=lambda: show_frame(page5B))
 btn_frame_page5B.grid(row=2, column=1, sticky='n')
