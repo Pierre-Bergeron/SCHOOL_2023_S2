@@ -493,7 +493,7 @@ page4B_rcvCT_inp.grid(row=3, column=2, sticky='n')
 page4B_rcv_subm = tk.Button(page4B, text="", highlightbackground="#E5F6DF", width=0, bg='#E5F6DF', borderwidth=0, command=set_rcv)
 page4B_rcv_subm.grid(row=3, column=3, columnspan=2, sticky='n')
 
-
+# page 5 options
 option_page5 = tk.Label(page5, text=" Options de changement", font=("Arial", 28), bg='#becee5')
 option_page5.grid(row=0, column=0, columnspan=3, sticky='n')
 btn_frame_page5A = tk.Button(page5, text="Ajouté un article", width=25, highlightbackground='#becee5', command=lambda: show_frame(page5A))
@@ -501,15 +501,89 @@ btn_frame_page5A.grid(row=1, column=1, sticky='n')
 btn_frame_page5B = tk.Button(page5, text="Modifié un article", width=25, highlightbackground='#becee5', command=lambda: show_frame(page5B))
 btn_frame_page5B.grid(row=2, column=1, sticky='n')
 
+#FUNCTION 5B ID PRE-GEN DETAILS
+def article_5B_detail():
+    id_5B = find_ref(page5B_id_inp.get())
+    desc_5B = pull(id_5B, 1)
+    prix_5B = pull(id_5B, 4)
+    qty_5B = pull(id_5B, 3)
+    ipfr_5B = pull(id_5B, 2)
+
+    page5B_desc_enty.insert(0, desc_5B)
+    page5B_prix_enty.insert(0, prix_5B)
+    page5B_qty_enty.insert(0, qty_5B)
+    page5B_ipfr_statusPRV['text'] = ipfr_5B
+
+
+def p5B_actif():
+    page5B_ipfr_status['text'] = "Actif"
+    page5B_mod_subm['text'] = "Soummettre Changement"
+    page5B_mod_subm['borderwidth'] = 2
+def p5B_non():
+    page5B_ipfr_status['text'] = "Non"
+    page5B_mod_subm['text'] = "Soummettre Changement"
+    page5B_mod_subm['borderwidth'] = 2
+
+def set_edit():
+    id_refS = find_ref(page5B_id_inp.get())
+    n_desc = page5B_desc_enty.get()
+    n_prix = page5B_prix_enty.get()
+    n_invt = page5B_qty_enty.get()
+    n_ipfr = page5B_ipfr_status['text']
+    # 1=DESC, 2=IPFR, 3=QTY, 4=COST
+    push(id_refS, 1, n_desc)
+    push(id_refS, 4, n_prix)
+    push(id_refS, 3, n_invt)
+    push(id_refS, 2, n_ipfr)
+    show_frame(confirm_page)
+
 # add page 5A and 5B below this line
 
+page5B_id_label = tk.Label(page5B, text="ID d'article :", bg='#E5F6DF')
+page5B_id_label.grid(row=0, column=0, sticky='e')
+page5B_id_inp = tk.Entry(page5B, bg="#FFFFFF", width=5, highlightbackground='#E5F6DF')
+page5B_id_inp.grid(row=0, column=1, sticky='w')
+page5B_id_detail = tk.Button(page5B, text="Détail sur l'article", highlightbackground="#E5F6DF", command=article_5B_detail)
+page5B_id_detail.grid(row=0, column=3, columnspan=2, sticky='n')
+
+# Description :
+page5B_desc_label = tk.Label(page5B, text="Description:", bg='#E5F6DF')
+page5B_desc_label.grid(row=1, column=0, sticky='e')
+page5B_desc_enty = tk.Entry(page5B, width=20, highlightbackground='#E5F6DF')
+page5B_desc_enty.grid(row=1, column=1, columnspan=3, sticky='n')
+
+page5B_prix_label = tk.Label(page5B, text="Prix:", bg='#E5F6DF')
+page5B_prix_label.grid(row=2, column=0, sticky='e')
+page5B_prix_enty = tk.Entry(page5B, width=20, highlightbackground='#E5F6DF')
+page5B_prix_enty.grid(row=2, column=1, columnspan=3, sticky='n')
+
+page5B_qty_label = tk.Label(page5B, text="Quantité:", bg='#E5F6DF')
+page5B_qty_label.grid(row=3, column=0, sticky='e')
+page5B_qty_enty = tk.Entry(page5B, width=20, highlightbackground='#E5F6DF')
+page5B_qty_enty.grid(row=3, column=1, columnspan=3, sticky='n')
+
+#IPFR RADIO_BUTTION
+page5B_ipfr_labelPRV = tk.Label(page5B, text="IPFR Status:", bg='#E5F6DF')
+page5B_ipfr_labelPRV.grid(row=4, column=0, sticky='e')
+page5B_ipfr_statusPRV = tk.Label(page5B, text="", bg='#E5F6DF')
+page5B_ipfr_statusPRV.grid(row=4, column=1, sticky='e')
+page5B_ipfr_label = tk.Label(page5B, text="IPFR Status:", bg='#E5F6DF')
+page5B_ipfr_label.grid(row=5, column=0, sticky='e')
+page5B_ipfr_status = tk.Label(page5B, text="", bg='#E5F6DF')
+page5B_ipfr_status.grid(row=5, column=1, sticky='e')
+
+page5B_ipfr_Actif = tk.Button(page5B, text='Actif', highlightbackground="#E5F6DF", command=p5B_actif)
+page5B_ipfr_Actif.grid(row=6, column=1)
+page5B_ipfr_Non = tk.Button(page5B, text='Non', highlightbackground="#E5F6DF", command=p5B_non)
+page5B_ipfr_Non.grid(row=6, column=2)
+
+page5B_mod_subm = tk.Button(page5B, text="", highlightbackground="#E5F6DF", width=0, bg='#E5F6DF', borderwidth=0, command=set_edit)
+page5B_mod_subm.grid(row=7, column=1, columnspan=3, sticky='n')
 
 
 
 
-
-
-
+# Confirm Screen
 confirm_page_titre = tk.Label(confirm_page, text="Demande acceptée", font=("Arial", 35), bg='#2FEF10')
 confirm_page_titre.grid(row=0, column=0, columnspan=3, sticky='n')
 confirm_page_rtn = tk.Button(confirm_page, text="Retour au menu", highlightbackground="#2FEF10", command=lambda: show_frame(page1))
