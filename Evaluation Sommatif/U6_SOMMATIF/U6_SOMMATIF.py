@@ -265,7 +265,7 @@ def purchase_review():
     prd_1_tot = qty_buy_1 * prd_1_prix
     pur_1_qty['text'] = qty_buy_1
     pur_1_prix['text'] = prd_1_prix
-    pur_1_tot['text'] = prd_1_tot
+    pur_1_tot['text'] = round(prd_1_tot, 2)
 
     article_id_sumitted2 = find_ref(id_inp_prd_2.get())
     article_desc2 = pull(article_id_sumitted2, 1)
@@ -276,7 +276,7 @@ def purchase_review():
     prd_2_tot = qty_buy_2 * prd_2_prix
     pur_2_qty['text'] = qty_buy_2
     pur_2_prix['text'] = prd_2_prix
-    pur_2_tot['text'] = prd_2_tot
+    pur_2_tot['text'] = round(prd_2_tot, 2)
 
     article_id_sumitted3 = find_ref(id_inp_prd_3.get())
     article_desc3 = pull(article_id_sumitted3, 1)
@@ -287,7 +287,7 @@ def purchase_review():
     prd_3_tot = qty_buy_3 * prd_3_prix
     pur_3_qty['text'] = qty_buy_3
     pur_3_prix['text'] = prd_3_prix
-    pur_3_tot['text'] = prd_3_tot
+    pur_3_tot['text'] = round(prd_3_tot, 2)
 
     art_id_prd1['text'] = id_inp_prd_1.get()
     art_id_prd2['text'] = id_inp_prd_2.get()
